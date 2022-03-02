@@ -4,6 +4,8 @@
 
 Ideas from https://sites.google.com/site/mededlit2/tidbits
 
+Preliminary search 02.03.2022
+
 1 - 100862 
 ```
 "students, health occupations"[MeSH Terms] 
