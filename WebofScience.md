@@ -1,5 +1,7 @@
 # Preliminary searches in Web of Science
 
+Preliminary test searches, done 02.03.2022. Web of Science Core Collection (SCIE 1945-present, SSCI 1956-present, AHCI 1975-present, ESCI 2017-present).
+
 #### 1 - Terms to limit to medical education - 145 950
 
 Tested out with `nurse$`, this seemed to bring in results about continuing education of nurses, hence the inclusion of `student nurse$`. 
