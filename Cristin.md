@@ -6,8 +6,12 @@ Used 24 central journals in Medical Education from  Maggio, LA, Ninkov, A, Frank
 Searched for all publications in these journals within Cristin timeframe (2011-2020). Searched with filters:
 * NVI subset
 
-Note coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
+#### Important issues using journals
+Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
 > While all of these journals are indexed in PubMed, seven of them are not included in their entirety, namely: Advances in Health Sciences Education, Canadian Medical Education Journal, Clinical Teacher, Medical Education Online, Medical Teacher, Teaching and Learning in Medicine, and The Journal of Continuing Education in the Health Professions. For example, Clinical Teacher first appeared in PubMed in 2010, but the journal started publishing articles in 2003. Therefore, for these seven journals we identified citations from these periods by hand searching the journal’s website or Web of Science (WoS).
+
+Where is medical education research? Comment from  Kyungjoon Lee, Julia S. Whelan, Nancy H. Tannery, Steven L. Kanter & Antoinette S. Peters (2013) 50 years of publication in the field of medical education, Medical Teacher, 35:7, 591-598, https://doi.org/10.3109/0142159X.2013.786168 
+> However, importantly, more than 80% of all ME articles were not published in ME journals. The 13 ME journals that existed, even briefly, during the 50 year period published only 18% of all ME articles (n = 14 753).
 
 ```
 IF CONTAINS(LOWER([journal]),	"academic medicine"	)
