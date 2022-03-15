@@ -86,18 +86,18 @@ OR "medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "m
 OR "medical school*"[Title/Abstract] 
 OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract]
 OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] 
-OR "medical train*"[Title/Abstract] 
-OR "registrar*"[Title/Abstract] OR "resident physician*"[Title/Abstract]
-OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract] 
-OR "medical educator*"[Title/Abstract] 
+OR "medical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] 
+OR "registrar*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residenc*"[Title/Abstract] OR "medical intern*"[Title/Abstract] 
+OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]  
 ```
 
 #### 5 - Teaching terms 
 ```
-"pedagog*"[Title/Abstract] OR "educational"[Title/Abstract] 
-OR "teaching"[Title/Abstract] OR "learning"[Title/Abstract] 
+"pedagog*"[Title/Abstract] OR "educational"[Title/Abstract] OR "medical educator*"[Title/Abstract]
+OR "teaching"[Title/Abstract] OR "learning"[Title/Abstract] OR "learn"[Title/Abstract] 
 OR "curricul*"[Title/Abstract] OR "programme design"[Title/Abstract] 
 OR "classroom*"[Title/Abstract] OR "lectures"[Title/Abstract] OR "lecturing"[Title/Abstract] 
+OR "medical train*"[Title/Abstract] OR "clinical train*"[Title/Abstract] OR "surgical train*"[Title/Abstract] OR "specialist train*"[Title/Abstract]
 ```
 
 #### 6 - Instruction/evaluation terms - not sure about these
@@ -118,7 +118,7 @@ OR "classroom*"[Title/Abstract] OR "lectures"[Title/Abstract] OR "lecturing"[Tit
 #### 7 - Placement terms
 Could also consider `practice OR praxis` here but these are very general
 ```
-"clinical placement*"[Title/Abstract] OR "out placement*"[Title/Abstract] 
+"clinical placement*"[Title/Abstract] OR "out-placement*"[Title/Abstract] 
 OR "clerkship*"[Title/Abstract] OR "rotation*"[Title/Abstract] OR "residency"[Title/Abstract] 
 OR "internship*"[Title/Abstract] 
 ```
