@@ -1,48 +1,46 @@
 # Preliminary searches in PubMed
 
-## MeSH terms
+## MeSH search
 
 Ideas from https://sites.google.com/site/mededlit2/tidbits
 
-Preliminary search 02.03.2022
+Preliminary search 15.03.2022
 
-#### 1 - Medical education groups - 100862 
+#### 1 - Medical education groups - 51771 
 ```
-"students, health occupations"[MeSH Terms] 
+"students, medical"[MeSH Terms] 
+OR "students, premedical"[MeSH Terms]
 OR "faculty, medical"[MeSH Terms] 
-OR "faculty, nursing"[MeSH Terms] 
-OR "faculty, pharmacy"[MeSH Terms] 
-OR "faculty, dental"[MeSH Terms] 
+
 ```
-#### 2 - Terms for education - 882772
+#### 2 - Terms for education - 883870
 ```
 "Education"[MeSH Terms] 
 OR "models, educational"[MeSH Terms] 
 OR "Program Development"[MeSH Terms] 
 ```
 
-#### 3 - 1 AND 2 - Combined medical educational groups AND terms for education - 75076
+#### 3 - 1 AND 2 - Combined medical educational groups AND terms for education - 38624
 ```
-("students, health occupations"[MeSH Terms] OR ("faculty, medical"[MeSH Terms] OR "faculty, nursing"[MeSH Terms] OR "faculty, pharmacy"[MeSH Terms] OR "faculty, dental"[MeSH Terms])) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]) 
-```
-
-#### 4 - Medical education terms - 84598
-```
-"education, medical"[MeSH Terms:noexp] 
-OR "education, medical, undergraduate"[MeSH Terms]  
+("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])  
 ```
 
-#### 5 - 4 OR 3 - Medical education terms OR the combined education + groups - 139433
+#### 4 - Medical education terms - 178219
 ```
-"education, medical"[MeSH Terms:noexp] OR "education, medical, undergraduate"[MeSH Terms] OR (("students, health occupations"[MeSH Terms] OR ("faculty, medical"[MeSH Terms] OR "faculty, nursing"[MeSH Terms] OR "faculty, pharmacy"[MeSH Terms] OR "faculty, dental"[MeSH Terms])) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])) 
+"education, medical"[MeSH Terms] 
 ```
 
-#### 6 - Norway - 139859
+#### 5 - 4 OR 3 - Medical education terms OR the combined education + groups - 189924
+```
+"education, medical"[MeSH Terms] OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])) 
+```
+
+#### 6 - Norway - 140260
 ```
 "Norway"[Affiliation] 
 ```
 
-#### 7 - 6 AND 5 - 433
+#### 7 - 6 AND 5 - 382
 ```
-"Norway"[Affiliation] AND ("education, medical"[MeSH Terms:noexp] OR "education, medical, undergraduate"[MeSH Terms] OR (("students, health occupations"[MeSH Terms] OR ("faculty, medical"[MeSH Terms] OR "faculty, nursing"[MeSH Terms] OR "faculty, pharmacy"[MeSH Terms] OR "faculty, dental"[MeSH Terms])) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]))) 
+"Norway"[Affiliation] AND ("education, medical"[MeSH Terms] OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]))) 
 ```
