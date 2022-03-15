@@ -1,5 +1,14 @@
 # Notes
 
+## Scope
+
+1. Scientific articles (review and original) - not comments, editorials etc.
+2. Medicine only (not nursing, veterinary, dental, physio etc.)
+3. All levels of education
+    * Foundational / Undergraduate / Premed
+    * Post-graduate / Residency / Junior doctor
+    * Continuing / Specialist / Speciality Registrar
+
 ## Indexing in PubMed of central journals
 Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
 > While all of these journals are indexed in PubMed, seven of them are not included in their entirety, namely: 
