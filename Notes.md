@@ -18,7 +18,8 @@ Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge 
 * medical education, 1976, 1976
 * perspectives on medical education, 2012, 2012
 * simulation in healthcare-journal of the society for simulation in healthcare, 2006, 2006
-
+* 
+--
 * advances in health sciences education, 1996, 2001
 * clinical teacher, 2004, indexed in PubMed from 2010
 * education for health, 1996, 2003
@@ -26,7 +27,8 @@ Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge 
 * medical education online, 1996, 2008
 * medical teacher, 1979, 2002
 * teaching and learning in medicine, 1989, 2000
-
+* 
+--
 * advances in medical education and practice, not indexed?
 * african journal of health professions education, not indexed?
 * bmj simulation & technology enhanced learning, not indexed?
