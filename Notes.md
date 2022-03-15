@@ -8,6 +8,7 @@ Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge 
 
 #### Data from PubMed, start date and indexed from date:
 * Academic Medicine 1989, 1989
+* advances in medical education and practice, 2010, 2010
 * anatomical sciences education, 2007, 2008
 * bmc medical education, 2001, 2001
 * gms journal for medical education, 2016, 2016
@@ -21,17 +22,16 @@ Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge 
 * 
 --
 * advances in health sciences education, 1996, 2001
+* canadian medical education journal, 2010, 2012 (not in MEDLINE)
 * clinical teacher, 2004, indexed in PubMed from 2010
 * education for health, 1996, 2003
 * journal of continuing education in the health professions, 1988, 2000
+* journal of medical education and curricular development, 2014, 2016 (not in MEDLINE)
 * medical education online, 1996, 2008
 * medical teacher, 1979, 2002
 * teaching and learning in medicine, 1989, 2000
 * 
 --
-* advances in medical education and practice, not indexed?
-* african journal of health professions education, not indexed?
-* bmj simulation & technology enhanced learning, not indexed?
-* canadian medical education journal, not indexed?
-* focus on health professional education, not indexed?
-* journal of medical education and curricular development, not indexed?
+* african journal of health professions education, 2009, not indexed in MEDLINE, only selected citations from PMC
+* bmj simulation & technology enhanced learning, 2015, not indexed in MEDLINE, only selected citations in PubMed
+* focus on health professional education, 1999, not indexed
