@@ -14,6 +14,7 @@ OR "faculty, medical"[MeSH Terms]
 ```
 
 #### 2 - Terms for education - 883870
+The education MeSH term includes assessment, simulation training, etc.
 ```
 "Education"[MeSH Terms] 
 OR "models, educational"[MeSH Terms] 
@@ -49,7 +50,7 @@ OR "Program Development"[MeSH Terms]
 
 Preliminary search 15.03.2022
 
-I first tried combining all the suggested terms in a simple way - this lead to very much noise. Medical and education need to be more closely linked. 
+I first tried combining Search 1 AND 2 OR 3 OR 4 in a simple way - this lead to very much noise. Medical and education need to be more closely linked. See alternative nr. 4.
 
 #### 1 - Medicine/Doctor 
 ```
@@ -77,7 +78,8 @@ OR "supervisor*"[Title/Abstract] OR "mentor*"[Title/Abstract]
 OR "lecturer*"[Title/Abstract] 
 ```
 
-#### 1-4 ALTERNATIVE
+#### 1-4 ALTERNATIVE - medical school / education, or people in training
+Using `"resident*"[Title/Abstract]` alone is tricky due to surveys about residents of an area.
 ```
 "medical education"[Title/Abstract] 
 OR "medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] 
@@ -85,7 +87,7 @@ OR "medical school*"[Title/Abstract]
 OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract]
 OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] 
 OR "medical train*"[Title/Abstract] 
-OR "registrar*"[Title/Abstract] OR "resident*"[Title/Abstract] 
+OR "registrar*"[Title/Abstract] OR "resident physician*"[Title/Abstract]
 OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract] 
 OR "medical educator*"[Title/Abstract] 
 ```
