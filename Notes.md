@@ -7,7 +7,7 @@ Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge 
 > Therefore, for these seven journals we identified citations from these periods by hand searching the journal’s website or Web of Science (WoS).
 
 #### Data from PubMed, start date and indexed from date:
-* Academic Medicine 1989, 1989
+* academic medicine, 1989, 1989
 * advances in medical education and practice, 2010, 2010
 * anatomical sciences education, 2007, 2008
 * bmc medical education, 2001, 2001
@@ -19,7 +19,6 @@ Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge 
 * medical education, 1976, 1976
 * perspectives on medical education, 2012, 2012
 * simulation in healthcare-journal of the society for simulation in healthcare, 2006, 2006
-* 
 --
 * advances in health sciences education, 1996, 2001
 * canadian medical education journal, 2010, 2012 (not in MEDLINE)
