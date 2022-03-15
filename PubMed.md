@@ -51,7 +51,7 @@ OR "Program Development"[MeSH Terms]
 ## Option 1
 Simple search for papers including terms indicating medical education, either through use of terms for medical education, medical school/qualifications or medical trainees.
 
-Preliminary search 15.03.2022. When combined with the MeSH search above = 699 results
+Preliminary search 15.03.2022. When combined with the MeSH search above = 699 results (511 since 2011)
 
 #### 1 - Medical education - 53577
 ```
