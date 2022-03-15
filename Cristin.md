@@ -11,6 +11,7 @@ Where is medical education research? Comment from  Kyungjoon Lee, Julia S. Whela
 > However, importantly, more than 80% of all ME articles were not published in ME journals. The 13 ME journals that existed, even briefly, during the 50 year period published only 18% of all ME articles (n = 14 753).
 
 #### Search
+Note that this search will also find any journals containing "academic medicine", "medical education"
 
 ```
 IF CONTAINS(LOWER([journal]),	"academic medicine"	)
