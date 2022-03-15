@@ -77,6 +77,19 @@ OR "supervisor*"[Title/Abstract] OR "mentor*"[Title/Abstract]
 OR "lecturer*"[Title/Abstract] 
 ```
 
+#### 1-4 ALTERNATIVE
+```
+"medical education"[Title/Abstract] 
+OR "medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] 
+OR "medical school*"[Title/Abstract] 
+OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract]
+OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] 
+OR "medical train*"[Title/Abstract] 
+OR "registrar*"[Title/Abstract] OR "resident*"[Title/Abstract] 
+OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract] 
+OR "medical educator*"[Title/Abstract] 
+```
+
 #### 5 - Teaching terms 
 ```
 "pedagog*"[Title/Abstract] OR "teaching"[Title/Abstract] OR "learning"[Title/Abstract] 
