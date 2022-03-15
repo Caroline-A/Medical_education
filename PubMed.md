@@ -92,10 +92,10 @@ OR "medical educator*"[Title/Abstract]
 
 #### 5 - Teaching terms 
 ```
-"pedagog*"[Title/Abstract] OR "teaching"[Title/Abstract] OR "learning"[Title/Abstract] 
+"pedagog*"[Title/Abstract] OR "educational"[Title/Abstract] 
+OR "teaching"[Title/Abstract] OR "learning"[Title/Abstract] 
 OR "curricul*"[Title/Abstract] OR "programme design"[Title/Abstract] 
 OR "classroom*"[Title/Abstract] OR "lectures"[Title/Abstract] OR "lecturing"[Title/Abstract] 
-"educational"[Title/Abstract] 
 ```
 
 #### 6 - Instruction/evaluation terms - not sure about these
