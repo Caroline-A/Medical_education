@@ -9,6 +9,16 @@
     * Post-graduate / Residency / Junior doctor
     * Continuing / Specialist / Speciality Registrar
 
+## Database choice
+
+Using PubMed and Web of Science. Cristin can also be used back to 2011. 
+
+I tried with ERIC but had the issue that you can't search within affiliations, so it is hard to limit to Norway. 
+I tried using the Geographical filter but this was definately an underestimate. Thus, although ERIC would be a great database to search, I don't think we can use it without going through 10000 results manually.
+
+![image](https://user-images.githubusercontent.com/42732381/158985625-77e121af-eaa0-481c-891d-7b626598125e.png)
+
+
 ## Indexing in PubMed of central journals
 Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
 > While all of these journals are indexed in PubMed, seven of them are not included in their entirety, namely: 
@@ -28,7 +38,9 @@ Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge 
 * medical education, 1976, 1976
 * perspectives on medical education, 2012, 2012
 * simulation in healthcare-journal of the society for simulation in healthcare, 2006, 2006
+
 --
+
 * advances in health sciences education, 1996, 2001
 * canadian medical education journal, 2010, 2012 (not in MEDLINE)
 * clinical teacher, 2004, 2010
@@ -38,7 +50,9 @@ Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge 
 * medical education online, 1996, 2008
 * medical teacher, 1979, 2002
 * teaching and learning in medicine, 1989, 2000
+
 --
+
 * african journal of health professions education, 2009, not indexed in MEDLINE, only selected citations from PMC
 * bmj simulation & technology enhanced learning, 2015, not indexed in MEDLINE, only selected citations in PubMed
 * focus on health professional education, 1999, not indexed
