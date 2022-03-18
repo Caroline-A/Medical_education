@@ -42,3 +42,108 @@ THEN "MedEd"
 ELSE "non"
 END
 ```
+
+# Title search
+Terms in this search are automatically truncated both forwards and backwards, unless manually prevented by including a space before/after the term. 
+
+In English, I have searched for terms in the title (either terms for trainee doctors, or generic terms for education AND doctors/medicine).
+In Norwegian I have a slightly different approach. All education terms are linked to medical/doctor terms, OR to medical NPI subject fields (which limits the terms to their use in medical journals; https://npi.hkdir.no/fagfeltoversikt). This approach works much less well in English as terms such as "assessment" are so generic (e.g. there are lots of irrelevant results about medical assessments when searching for "assessment" in a oncology journal). 
+
+### Title search, English
+
+```
+IF ((
+CONTAINS(LOWER([result_title]),	"clerkship"	)
+OR CONTAINS(LOWER([result_title]),	"registrar"	)
+OR CONTAINS(LOWER([result_title]),	"junior doctor"	)
+OR CONTAINS(LOWER([result_title]),	"foundation doctor"	)
+)
+
+ELSEIF ((
+CONTAINS(LOWER([result_title]),	"educat"	)
+OR CONTAINS(LOWER([result_title]),	"teach"	)
+OR CONTAINS(LOWER([result_title]),	"degree"	)
+OR CONTAINS(LOWER([result_title]),	"diploma"	)
+OR CONTAINS(LOWER([result_title]),	"train"	)
+OR CONTAINS(LOWER([result_title]),	"school"	)
+OR CONTAINS(LOWER([result_title]),	"student"	)
+OR CONTAINS(LOWER([result_title]),	"graduate"	)
+OR CONTAINS(LOWER([result_title]),	"clerkship"	)
+OR CONTAINS(LOWER([result_title]),	"rotation"	)
+OR CONTAINS(LOWER([result_title]),	"intern"	)
+OR CONTAINS(LOWER([result_title]),	"resident"	)
+
+OR CONTAINS(LOWER([result_title]),	"pedagog"	) 
+OR CONTAINS(LOWER([result_title]),	"learn"	)
+OR CONTAINS(LOWER([result_title]),	"curricul"	) 
+OR CONTAINS(LOWER([result_title]),	"programme design"	) 
+OR CONTAINS(LOWER([result_title]),	"classroom"	) 
+OR CONTAINS(LOWER([result_title]),	"lectur"	) 
+OR CONTAINS(LOWER([result_title]),	"assessment"	) 
+OR CONTAINS(LOWER([result_title]),	"feedback"	) 
+OR CONTAINS(LOWER([result_title]),	"supervis"	)
+OR CONTAINS(LOWER([result_title]),	"mentor"	) 
+)
+AND (		
+CONTAINS(LOWER([result_title]),	"medic"	)
+OR CONTAINS(LOWER([result_title]),	"doctor"	)
+OR CONTAINS(LOWER([result_title]),	"physician"	)
+))
+
+THEN "MedEd"
+ELSE "non"
+END
+```
+
+### Title search, Norwegian
+
+``` 
+IF ((
+CONTAINS(LOWER([result_title]),	"utdann"	)
+OR CONTAINS(LOWER([result_title]),	"pedagog"	)
+OR CONTAINS(LOWER([result_title]),	"undervis"	)
+OR CONTAINS(LOWER([result_title]),	"læring"	)
+OR CONTAINS(LOWER([result_title]),	"studieplan"	)
+OR CONTAINS(LOWER([result_title]),	"studieprogr"	)
+OR CONTAINS(LOWER([result_title]),	"student"	)
+OR CONTAINS(LOWER([result_title]),	"foreles"	)
+OR CONTAINS(LOWER([result_title]),	"klasserom"	)
+OR CONTAINS(LOWER([result_title]),	"vurdering"	)
+OR CONTAINS(LOWER([result_title]),	"evaluering"	)
+OR CONTAINS(LOWER([result_title]),	"veiled"	)
+OR CONTAINS(LOWER([result_title]),	"supervis"	) 
+OR CONTAINS(LOWER([result_title]),	"simulering"	)
+OR CONTAINS(LOWER([result_title]),	"praksis"	) 
+OR CONTAINS(LOWER([result_title]),	"turnus"	) 
+OR CONTAINS(LOWER([result_title]),	"utplassering"	) 
+)
+AND (		
+CONTAINS(LOWER([result_title]),	"medisin"	)
+OR CONTAINS(LOWER([result_title]),	" lege "	)
+OR CONTAINS(LOWER([result_title]),	" leger"	)
+OR CONTAINS(LOWER([result_title]),	"fastlege"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "anestesi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "dermatologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "endokrinologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "gastroenter"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "generell medisin"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "geriatri"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "gynekologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "hematologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "hjerte"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "infeksjon"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "kirurgiske"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "nefrologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "nevrologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "onkologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "pediatri"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "radiologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "revmatologi"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "øre-nese"	)
+OR CONTAINS(LOWER([scientific_field_npi]),	 "øyesykdommer"	)
+))
+THEN "MedEd"
+ELSE "non"
+END
+```
+```
