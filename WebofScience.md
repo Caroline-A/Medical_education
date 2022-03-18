@@ -24,14 +24,14 @@ OR "registrar*" OR "medical intern*"
 OR "resident physician*" OR "medical residen*" 
 OR "junior doctor*" OR "foundation doctor*" OR "trainee doctor*" 
 OR (
-      ("clinical education" OR "clinical teach*" OR "simulation training" OR "teaching simulation$") 
+      ("clinical educat*" OR "clinical teach*" OR "simulation training" OR "teaching simulation$") 
       AND ("medic*" OR "doctor$")
    )
 )
 ```
 
 #### 2 - Limit to Norway - 668
-See the results here: https://www.webofscience.com/wos/woscc/summary/aad76c84-d5d9-4f3f-8dd2-10229b6ce511-2ac4a343/relevance/1
+See the results here: https://www.webofscience.com/wos/woscc/summary/b9b9f801-e20a-4c5e-a054-21b6d044f157-2ac4f57b/relevance/1
 ```
 #1 AND CU="Norway"
 ```
