@@ -1,10 +1,15 @@
 # Preliminary searches in PubMed
 
+Current suggestion, combination of MeSH and free text option 1 (18.03.22) = 661 results
+See below for explanation line for line.
+
+```
+("norway"[Affiliation] AND ("education, medical"[MeSH Terms] OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])))) OR ("norway"[Affiliation] AND ((("medic*"[Title/Abstract] OR "doctor*"[Title/Abstract] OR "physician*"[Title/Abstract]) AND ("clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract])) OR ("medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]) OR ("medical educat*"[Title/Abstract] OR "medical teach*"[Title/Abstract]))) 
+```
+
 # MeSH search
 
-Ideas from https://sites.google.com/site/mededlit2/tidbits
-
-Preliminary search 18.03.2022
+Ideas from https://sites.google.com/site/mededlit2/tidbits. Preliminary search 15.03.2022:
 
 #### 1 - Medical education groups - 51771 
 ```
