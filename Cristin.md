@@ -52,12 +52,13 @@ In Norwegian I have a slightly different approach. All education terms are linke
 ### Title search, English
 
 ```
-IF ((
+IF (
 CONTAINS(LOWER([result_title]),	"clerkship"	)
 OR CONTAINS(LOWER([result_title]),	"registrar"	)
 OR CONTAINS(LOWER([result_title]),	"junior doctor"	)
 OR CONTAINS(LOWER([result_title]),	"foundation doctor"	)
 )
+THEN "MedEd"
 
 ELSEIF ((
 CONTAINS(LOWER([result_title]),	"educat"	)
@@ -86,7 +87,7 @@ OR CONTAINS(LOWER([result_title]),	"mentor"	)
 )
 AND (		
 CONTAINS(LOWER([result_title]),	"medic"	)
-OR CONTAINS(LOWER([result_title]),	"doctor"	)
+OR (CONTAINS(LOWER([result_title]),"doctor") AND NOT CONTAINS(LOWER([result_title]),"doctoral"))	
 OR CONTAINS(LOWER([result_title]),	"physician"	)
 ))
 
