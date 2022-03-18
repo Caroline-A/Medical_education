@@ -56,7 +56,7 @@ OR "Program Development"[MeSH Terms]
 ## Option 1
 Simple search for papers including terms indicating medical education, either through use of terms for medical education, medical school/qualifications or medical trainees. The downside of this approach is that we may get papers about other aspects of these groups, e.g. mental health of medical students. However, there is not a huge difference in the number of results if we add in "education" terms (see Option 2); maybe it is not worth it in terms of risk of losing relevant works? 
 
-Preliminary search 15.03.2022. When combined with the MeSH search above = 885 results (446 since 2011)
+Preliminary search 15.03.2022. When combined with the MeSH search above = 885 results (684 since 2011)
 
 #### 1 - Medical school / education, or people in training - 
 Using `"resident*"[Title/Abstract]` alone is tricky due to surveys about residents of an area. 
