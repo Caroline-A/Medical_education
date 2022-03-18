@@ -4,7 +4,7 @@
 
 Ideas from https://sites.google.com/site/mededlit2/tidbits
 
-Preliminary search 15.03.2022
+Preliminary search 18.03.2022
 
 #### 1 - Medical education groups - 51771 
 ```
@@ -51,14 +51,14 @@ OR "Program Development"[MeSH Terms]
 ## Option 1
 Simple search for papers including terms indicating medical education, either through use of terms for medical education, medical school/qualifications or medical trainees. The downside of this approach is that we may get papers about other aspects of these groups, e.g. mental health of medical students. However, there is not a huge difference in the number of results if we add in "education" terms (see Option 2); maybe it is not worth it in terms of risk of losing relevant works? 
 
-Preliminary search 15.03.2022. When combined with the MeSH search above = 699 results (511 since 2011)
+Preliminary search 15.03.2022 = 444 results. When combined with the MeSH search above = 661 results (446 since 2011)
 
-#### 1 - Medical education - 53577
+#### 1 - Medical education - 
 ```
-"medical education"[Title/Abstract] 
+"medical educat*"[Title/Abstract] OR "medical teach*"[Title/Abstract] 
 ```
 
-#### 2 - Medical school / education, or people in training - 95376
+#### 2 - Medical school / education, or people in training - 
 Using `"resident*"[Title/Abstract]` alone is tricky due to surveys about residents of an area. 
 Tested `"out-placement*"`, it did not find anything but noise. 
 Used `medicine training` rather than `medical training` as the latter is more general.
@@ -69,24 +69,45 @@ OR "medical school*"[Title/Abstract]
 OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract]
 OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] 
 OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract]
-OR "medical rotation*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract]
-OR "medical placement*"[Title/Abstract] OR "clinical placement*"[Title/Abstract]
+OR "medical rotation*"[Title/Abstract] 
+OR "medical placement*"[Title/Abstract] 
 OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] 
 OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] 
 OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]  
 ```
 
-#### 3 - 1 OR 2 and Norway - 480
+#### 3 - Training situations that can be many areas
 ```
-("medical education"[Title/Abstract] OR ("medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract])) AND "Norway"[Affiliation] 
+"clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] 
+OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract]
+OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract] 
 ```
 
-## Option 2 - combine the people above with teaching terms
-This option cuts around 100 from the results list. What are we losing here? 
+#### 4 - medical/doctor
+```
+"medic*"[Title/Abstract] OR "doctor*"[Title/Abstract] OR "physician*"[Title/Abstract]
+```
 
-However, when we combine with the MeSH terms, the results are not so different: 615 total results.
+#### 5 - 3 AND 4 - 6457
+A number of clinical/training terms are combined with medic* OR doctor$ to avoid many results from nursing/dentistry.
+```
+("medic*"[Title/Abstract] OR "doctor*"[Title/Abstract] OR "physician*"[Title/Abstract]) AND ("clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract]) 
+```
 
-#### 4 - Teaching terms -1167095
+#### 6 - (1 OR 2 OR 5) - 133176
+```
+(("medic*"[Title/Abstract] OR "doctor*"[Title/Abstract] OR "physician*"[Title/Abstract]) AND ("clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract])) OR ("medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]) OR ("medical educat*"[Title/Abstract] OR "medical teach*"[Title/Abstract])
+```
+
+#### 7 - 6 AND Norway - 444
+```
+"Norway"[Affiliation] AND ((("medic*"[Title/Abstract] OR "doctor*"[Title/Abstract] OR "physician*"[Title/Abstract]) AND ("clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract])) OR ("medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]) OR ("medical educat*"[Title/Abstract] OR "medical teach*"[Title/Abstract])) 
+```
+
+## Option 2 - combine the people and teaching situations above with teaching terms
+This option cuts around 100 from the results list. What are we losing here? However, when we combine with the MeSH terms, the number of results is not so different: 579 total results.
+
+#### A - Teaching terms -1167095
 ```
 "pedagog*"[Title/Abstract] OR "education*"[Title/Abstract] 
 OR "medical educator*"[Title/Abstract]
@@ -97,22 +118,22 @@ OR "classroom*"[Title/Abstract] OR "lectures"[Title/Abstract] OR "lecturing"[Tit
 OR "medical train*"[Title/Abstract] OR "clinical train*"[Title/Abstract] OR "surgical train*"[Title/Abstract] OR "specialist train*"[Title/Abstract]
 ```
 
-#### 5 - Instruction/evaluation terms - 2488537
+#### B - Instruction/evaluation terms - 2488537
 ```
 "instruction*"[Title/Abstract] OR "assessment"[Title/Abstract] OR "evaluation"[Title/Abstract] OR "feedback"[Title/Abstract] 
 ```
 
-#### 6 - Supervision terms - 52265
+#### C - Supervision terms - 52265
 ```
 "supervision"[Title/Abstract] OR "mentoring"[Title/Abstract] OR "mentorship"[Title/Abstract] OR "coaching"[Title/Abstract] 
 ```
 
-#### 7 - Simulation - 407028
+#### D - Simulation - 407028
 ```
 "simulation*"[Title/Abstract] 
 ```
 
-#### 8 - 3 AND (4 OR 5 OR 6 OR 7) - 373
+#### E - 7 AND (A OR B OR C OR D) - 339
 ```
 ("simulation*"[Title/Abstract] OR ("supervision"[Title/Abstract] OR "mentoring"[Title/Abstract] OR "mentorship"[Title/Abstract] OR "coaching"[Title/Abstract]) OR ("instruction*"[Title/Abstract] OR "assessment"[Title/Abstract] OR "evaluation"[Title/Abstract] OR "feedback"[Title/Abstract]) OR ("pedagog*"[Title/Abstract] OR "education*"[Title/Abstract] OR "medical educator*"[Title/Abstract] OR "teaching"[Title/Abstract] OR "learning"[Title/Abstract] OR "learn"[Title/Abstract] OR "curricul*"[Title/Abstract] OR "programme design"[Title/Abstract] OR "classroom*"[Title/Abstract] OR "lectures"[Title/Abstract] OR "lecturing"[Title/Abstract] OR "medical train*"[Title/Abstract] OR "clinical train*"[Title/Abstract] OR "surgical train*"[Title/Abstract] OR "specialist train*"[Title/Abstract])) AND (("medical education"[Title/Abstract] OR ("medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract])) AND "Norway"[Affiliation]) 
 ```
