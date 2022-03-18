@@ -26,13 +26,13 @@ OR (
       ("clinical educat*" OR "clinical teach*"
       OR "clinical rotation*" OR "clinical placement*"
       OR "simulation training" OR "teaching simulation$") 
-      AND ("medic*" OR "doctor$")
+      AND ("medic*" OR "doctor$" OR "physician$")
    )
 )
 ```
 
-#### 2 - Limit to Norway - 602
-See the results here: https://www.webofscience.com/wos/woscc/summary/117cc94f-4826-4eab-bda3-71cf286ea97c-2ac55401/relevance/1
+#### 2 - Limit to Norway - 605
+See the results here: https://www.webofscience.com/wos/woscc/summary/722ae62f-6d74-4a85-b01c-36ed8e699c94-2ac59257/relevance/1
 ```
 #1 AND CU="Norway"
 ```
