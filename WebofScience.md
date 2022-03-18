@@ -4,7 +4,7 @@ Preliminary test searches, done 15.03.2022. Web of Science Core Collection (SCIE
 
 #### 1 - Terms to limit to medical education - 129234
 Here I am testing with phrases used in PubMed, but could also consider using a proximity search here to help with variations in terminology.
-`clinical` is combined with `medic* OR doctor$` to avoid many results from nursing/dentistry.
+A number of `clinical` terms are combined with `medic* OR doctor$` to avoid many results from nursing/dentistry.
 
 The downside with this strategy is that you get results about e.g. stress levels in medical students.
 
@@ -18,20 +18,21 @@ OR "medical school*"
 OR "medical student*" OR "medicine student*"
 OR "undergraduate medic*" OR "postgraduate medic*" 
 OR "medical clerkship*" OR "clinical clerkship*"
-OR "medical rotation*" OR "clinical rotation*"
-OR "medical placement*" OR "clinical placement*"
+OR "medical rotation*" OR "medical placement*" 
 OR "registrar*" OR "medical intern*"
 OR "resident physician*" OR "medical residen*" 
 OR "junior doctor*" OR "foundation doctor*" OR "trainee doctor*" 
 OR (
-      ("clinical educat*" OR "clinical teach*" OR "simulation training" OR "teaching simulation$") 
+      ("clinical educat*" OR "clinical teach*"
+      OR "clinical rotation*" OR "clinical placement*"
+      OR "simulation training" OR "teaching simulation$") 
       AND ("medic*" OR "doctor$")
    )
 )
 ```
 
-#### 2 - Limit to Norway - 668
-See the results here: https://www.webofscience.com/wos/woscc/summary/b9b9f801-e20a-4c5e-a054-21b6d044f157-2ac4f57b/relevance/1
+#### 2 - Limit to Norway - 602
+See the results here: https://www.webofscience.com/wos/woscc/summary/117cc94f-4826-4eab-bda3-71cf286ea97c-2ac55401/relevance/1
 ```
 #1 AND CU="Norway"
 ```
