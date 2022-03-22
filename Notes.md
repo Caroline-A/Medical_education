@@ -12,6 +12,11 @@
 ## Term notes, consider adding
 * problem based learning
 
+## Example articles to test against
+Should be found
+* Kristin Wigen, Are Holen & Øyvind Ellingsen (2003) Predicting academic success by group behaviour in PBL, Medical Teacher, 25:1, 32-37, DOI: 10.1080/0142159021000061396
+* Gude, T., Hjortdahl, P., Anvik, T., Bærheim, A., Fasmer, O. B., Grimstad, H., ... & Vaglum, P. (2005). Does change from a traditional to a new medical curriculum reduce negative attitudes among students? A quasi-experimental study. Medical teacher, 27(8), 737-739.
+* Smeby, S. S., Espeland, T., Berg, E. A. R., Samstad, E., Lillebo, B., & Slørdahl, T. S. (2021). Examining the educational impact of the mini-CEX: a randomised controlled study. BMC.
 
 ## Database choice
 
