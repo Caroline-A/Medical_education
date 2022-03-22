@@ -9,6 +9,10 @@
     * Post-graduate / Residency / Junior doctor
     * Continuing / Specialist / Speciality Registrar
 
+## Term notes, consider adding
+* problem based learning
+
+
 ## Database choice
 
 Using PubMed and Web of Science. Cristin can also be used back to 2011. 
