@@ -22,7 +22,9 @@ Should be found
 
 Using PubMed and Web of Science. Cristin can also be used back to 2011. 
 
-I tried with ERIC but had the issue that you can't search within affiliations, so it is hard to limit to Norway. 
+In the Education database (ProQuest) you can search within author addresses using the AU field - maybe worth testing. https://bibsys-almaprimo.hosted.exlibrisgroup.com/permalink/f/1k1ulm2/BIBSYS_ILS71554709860002201
+
+I tried with ERIC but had the issue that you can't search within affiliations, so it is hard to limit to Norway. It seems affiliations are not indexed.
 I tried using the Geographical filter but this was definately an underestimate. Thus, although ERIC would be a great database to search, I don't think we can use it without going through 10000 results manually.
 
 ![image](https://user-images.githubusercontent.com/42732381/158985625-77e121af-eaa0-481c-891d-7b626598125e.png)
