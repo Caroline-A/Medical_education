@@ -2,8 +2,10 @@
 
 ## Scope
 
+Publications about medical education, including continuing and work-based education, and including research about people undergoing medical training (e.g. their mental health). 
+
 1. Scientific articles (review and original) - not comments, editorials etc.
-2. Medicine only (not nursing, veterinary, dental, physio etc.)
+2. Medicine only, including medicine, surgery, psychiatry (not nursing, veterinary, dental, physio etc.)
 3. All levels of education
     * Foundational / Undergraduate / Premed
     * Post-graduate / Residency / Junior doctor
@@ -11,6 +13,9 @@
 
 ## Term notes, consider adding
 * problem based learning
+* work-based learning
+* on the job training
+* psychiatry/psychiatrist
 
 ## Example articles to test against
 Should be found
