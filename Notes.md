@@ -28,6 +28,8 @@ We can retain the WOSID/PMID throughout the screening process by
 * work-based learning
 * on the job training
 * psychiatry/psychiatrist
+* "undergraduate supervis*" OR "postgraduate supervis*" OR "clinical supervis*"
+* "post graduate student$" OR "post graduate training" OR "post graduate speciali*"
 
 ## Example articles to test search against
 Should be found
