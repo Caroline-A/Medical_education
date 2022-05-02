@@ -1,17 +1,17 @@
 # Preliminary search in Cristin via Tableau DUCT
 
 # Journal search
-Used 24 central journals in Medical Education from  Maggio, LA, Ninkov, A, Frank, JR, Costello, JA, Artino, AR. Delineating the field of medical education: Bibliometric research approach(es). Med Educ. 2022; 56( 4): 387- 394. https://doi.org/10.1111/medu.14677 
+We used 24 central journals in Medical Education, from  Maggio, LA, Ninkov, A, Frank, JR, Costello, JA, Artino, AR. Delineating the field of medical education: Bibliometric research approach(es). Med Educ. 2022; 56( 4): 387- 394. https://doi.org/10.1111/medu.14677 
 
-Searched for all publications in these journals within Cristin timeframe (2011-2020). Searched with filters:
-* NVI subset
-
-#### Issue using journals
-Where is medical education research? Comment from  Kyungjoon Lee, Julia S. Whelan, Nancy H. Tannery, Steven L. Kanter & Antoinette S. Peters (2013) 50 years of publication in the field of medical education, Medical Teacher, 35:7, 591-598, https://doi.org/10.3109/0142159X.2013.786168 
-> However, importantly, more than 80% of all ME articles were not published in ME journals. The 13 ME journals that existed, even briefly, during the 50 year period published only 18% of all ME articles (n = 14 753).
+An issue using journals is that not all medical education research is published in medical education journals - thus we will do title abstract searches too. 
+See below comment from  Kyungjoon Lee, Julia S. Whelan, Nancy H. Tannery, Steven L. Kanter & Antoinette S. Peters (2013) 50 years of publication in the field of medical education, Medical Teacher, 35:7, 591-598, https://doi.org/10.3109/0142159X.2013.786168 
+> "However, importantly, more than 80% of all ME articles were not published in ME journals. The 13 ME journals that existed, even briefly, during the 50 year period published only 18% of all ME articles (n = 14 753)".
 
 #### Search
 Note that this search will also find any journals containing "academic medicine", "medical education"
+
+Searched for all publications in these journals within Cristin timeframe (2011-2020). Searched with filters:
+* NVI subset
 
 ```
 IF CONTAINS(LOWER([journal]),	"academic medicine"	)
@@ -44,6 +44,9 @@ END
 ```
 
 # Title search
+Searched for all publications in these journals within Cristin timeframe (2011-2020). Searched with filters:
+* NVI subset
+
 Terms in this search are automatically truncated both forwards and backwards, unless manually prevented by including a space before/after the term. 
 
 In English, I have searched for terms in the title (either terms for trainee doctors, or generic terms for education AND doctors/medicine).
