@@ -1,9 +1,13 @@
 # Preliminary search in Cristin via Tableau DUCT
 
+We ran a search in the national CRIS in Norway (current research information system; CRISTIN). This is a complete record of all Norwegian scientific publications from CRISTIN institutions since 2011, with "NVI subset" limiting the set to publications which are deemed "scientific" in the national system. The definition of "scientific" effectively covers the publication types interesting for our review; the criteria are that the work gives new insight, is presented in a form which makes the results verifiable or usable in new research, is presented in a language and have a distribution which makes it accessible for the majority of researchers interested in it, and is in a publication channel with routines for "peer review" (copied from CRISTIN [n.d.] Reporting instructions (NVI) . https://www.cristin.no/english/resources/reporting-instructions/ (retrieved 02.06.2022)). 
+
+This datasource (FOR_data_sted_total) was accessed via a Tableau-based server available via login to Norwegian Cristin institutions (DUCT). The data is also available publicly via an API (https://www.cristin.no/tjenester/api/). Searches were run using Tableau, by creating an IF CONTAINS variable in the data.
+
 # Journal search
 We used 24 central journals in Medical Education, from  Maggio, LA, Ninkov, A, Frank, JR, Costello, JA, Artino, AR. Delineating the field of medical education: Bibliometric research approach(es). Med Educ. 2022; 56( 4): 387- 394. https://doi.org/10.1111/medu.14677 
 
-An issue using journals is that not all medical education research is published in medical education journals - thus we will do title abstract searches too. 
+An issue using journals is that not all medical education research is published in medical education journals - thus we do title/abstract searches too. 
 See below comment from  Kyungjoon Lee, Julia S. Whelan, Nancy H. Tannery, Steven L. Kanter & Antoinette S. Peters (2013) 50 years of publication in the field of medical education, Medical Teacher, 35:7, 591-598, https://doi.org/10.3109/0142159X.2013.786168 
 > "However, importantly, more than 80% of all ME articles were not published in ME journals. The 13 ME journals that existed, even briefly, during the 50 year period published only 18% of all ME articles (n = 14 753)".
 
@@ -44,13 +48,13 @@ END
 ```
 
 # Title search
-Searched for all publications in these journals within Cristin timeframe (2011-2020). Searched with filters:
+Searched all publications within Cristin timeframe (2011-2020). Searched with filters:
 * NVI subset
 
 Terms in this search are automatically truncated both forwards and backwards, unless manually prevented by including a space before/after the term. 
 
-In English, I have searched for terms in the title (either terms for trainee doctors, or generic terms for education AND doctors/medicine).
-In Norwegian I have a slightly different approach. All education terms are linked to medical/doctor terms, OR to medical NPI subject fields (which limits the terms to their use in medical journals; https://npi.hkdir.no/fagfeltoversikt). This approach works much less well in English as terms such as "assessment" are so generic (e.g. there are lots of irrelevant results about medical assessments when searching for "assessment" in a oncology journal). 
+In English, we have searched for terms in the title (either terms for trainee doctors, or generic terms for education AND doctors/medicine).
+In Norwegian we have a slightly different approach. All education terms are linked to medical/doctor terms, OR to medical NPI subject fields (which limits the terms to their use in medical journals; https://npi.hkdir.no/fagfeltoversikt). This approach works much less well in English as terms such as "assessment" are so generic (e.g. there are lots of irrelevant results about medical assessments when searching for "assessment" in a oncology journal). 
 
 ### Title search, English
 
