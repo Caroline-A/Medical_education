@@ -50,12 +50,12 @@ I tried using the Geographical filter but this was definately an underestimate. 
 
 
 ## Indexing in PubMed of central journals
-Coverage comment from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
+The coverage comment below is from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
 > While all of these journals are indexed in PubMed, seven of them are not included in their entirety, namely: 
 > Advances in Health Sciences Education, Canadian Medical Education Journal, Clinical Teacher, Medical Education Online, Medical Teacher, Teaching and Learning in Medicine, and The Journal of Continuing Education in the Health Professions. For example, Clinical Teacher first appeared in PubMed in 2010, but the journal started publishing articles in 2003. 
 > Therefore, for these seven journals we identified citations from these periods by hand searching the journal’s website or Web of Science (WoS).
 
-#### Data from PubMed, start date and indexed from date:
+#### Data I have checked from PubMed, start date and indexed from date:
 * academic medicine, 1989, 1989
 * advances in medical education and practice, 2010, 2010
 * anatomical sciences education, 2007, 2008
