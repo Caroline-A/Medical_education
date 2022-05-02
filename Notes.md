@@ -51,9 +51,10 @@ I tried using the Geographical filter but this was definately an underestimate. 
 
 ## Indexing in PubMed of central journals
 The coverage comment below is from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
-> While all of these journals are indexed in PubMed, seven of them are not included in their entirety, namely: 
-> Advances in Health Sciences Education, Canadian Medical Education Journal, Clinical Teacher, Medical Education Online, Medical Teacher, Teaching and Learning in Medicine, and The Journal of Continuing Education in the Health Professions. For example, Clinical Teacher first appeared in PubMed in 2010, but the journal started publishing articles in 2003. 
-> Therefore, for these seven journals we identified citations from these periods by hand searching the journal’s website or Web of Science (WoS).
+> "While all of these journals are indexed in PubMed, seven of them are not included in their entirety, namely: 
+> Advances in Health Sciences Education, Canadian Medical Education Journal, Clinical Teacher, Medical Education Online, Medical Teacher, Teaching and Learning in Medicine, and The Journal of Continuing Education in the Health Professions. For example, Clinical Teacher first appeared in PubMed in 2010, but the journal started publishing articles in 2003.".
+
+From below, I can see that 12 of them have the same start/index date. 9 have gaps (2 x 2 years, 3 x 6-7 years, 4 x 11+ years), 3 are not indexed. We will find any missing publications from 2011 and onwards in the Cristin search. Other publications before this may be missing.
 
 #### Data I have checked from PubMed, start date and indexed from date:
 * academic medicine, 1989, 1989
@@ -71,15 +72,15 @@ The coverage comment below is from Maggio, L.A., Costello, J.A., Norton, C. et a
 
 --
 
-* advances in health sciences education, 1996, 2001
+* journal of medical education and curricular development, 2014, 2016 (not in MEDLINE)
 * canadian medical education journal, 2010, 2012 (not in MEDLINE)
+* advances in health sciences education, 1996, 2001
 * clinical teacher, 2004, 2010
 * education for health, 1996, 2003
+* teaching and learning in medicine, 1989, 2000
 * journal of continuing education in the health professions, 1988, 2000
-* journal of medical education and curricular development, 2014, 2016 (not in MEDLINE)
 * medical education online, 1996, 2008
 * medical teacher, 1979, 2002
-* teaching and learning in medicine, 1989, 2000
 
 --
 
