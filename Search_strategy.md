@@ -19,7 +19,7 @@ Preliminary test searches done March 2022. Final searches done 04.05.2022.
 
 The strategy consists of two parts: 
 * A journal search
-* A topic (title-abstract-keyword-keywordPlus) search for terms specific to medical education and medical groups in training, and a title-abstract-keyword search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
+* A topic (title-abstract-keyword-keywordPlus) search for terms specific to medical education and medical groups in training, and a topic search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
 
 #### 1 - Journal search - 44404 (all docs)
 Of the 24 journals, 2 were not found in Web of Science (Canadian medical education journal and Journal of graduate medical education).
@@ -86,12 +86,13 @@ Search URL: https://www.webofscience.com/wos/woscc/summary/32d54937-9f7c-4704-b3
 Preliminary test searches done March 2022. Final searches done 04.05.2022. 
 * Platform: PubMed advanced search interface (https://pubmed.ncbi.nlm.nih.gov/advanced/). Combinations of different search lines were done using the "Actions" function. 
 * Databases: PubMed
-* Filters for the final results:
-    * Document type:  
+* Filters for the final results: None
 
 The strategy consists of two parts: 
 * A MeSH search for terms specific to medical education and medical groups in training, and a MeSH search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
 * A title-abstract search for terms specific to medical education and medical groups in training, and a title-abstract search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
+
+A journal search was not run in PubMed as in this database we have MeSH terms to build a thorough search. 
 
 ### MeSH search
 
@@ -200,6 +201,73 @@ Clinical and generic education terms are combined with medical/doctor terms to a
 #### 14 - 7 OR 13 = 764
 ```
 ("Norway"[Affiliation] AND ("education, medical"[MeSH Terms] OR (("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]) AND ("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms])))) OR ("Norway"[Affiliation] AND ((("medicine"[Title/Abstract] OR "medical"[Title/Abstract] OR "medic"[Title/Abstract] OR "medics"[Title/Abstract] OR "doctor"[Title/Abstract] OR "doctors"[Title/Abstract] OR "physician*"[Title/Abstract] OR "surgeon*"[Title/Abstract] OR "surgery"[Title/Abstract] OR "psychiatry"[Title/Abstract] OR "psychiatrist*"[Title/Abstract]) AND ("clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract] OR "teaching practic*"[Title/Abstract] OR "teaching method*"[Title/Abstract] OR "teaching and learning"[Title/Abstract] OR "problem based learning"[Title/Abstract] OR "work based learning"[Title/Abstract] OR "curricul*"[Title/Abstract] OR "educational supervis*"[Title/Abstract] OR "postgraduate supervis*"[Title/Abstract] OR "clinical supervis*"[Title/Abstract] OR "undergraduate student*"[Title/Abstract] OR "undergraduate train*"[Title/Abstract] OR "postgraduate student*"[Title/Abstract] OR "postgraduate train*"[Title/Abstract] OR "postgraduate speciali*"[Title/Abstract] OR "graduate student*"[Title/Abstract] OR "graduate train*"[Title/Abstract] OR "graduate speciali*"[Title/Abstract] OR "continuing education"[Title/Abstract] OR "on the job training"[Title/Abstract])) OR ("medical educat*"[Title/Abstract] OR "medical teach*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "surgical educat*"[Title/Abstract] OR "surgery educat*"[Title/Abstract] OR "surgical train*"[Title/Abstract] OR "surgery train*"[Title/Abstract] OR "medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "post graduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]))) 
+```
+
+## Searches in ProQuest Education
+
+Preliminary test searches done April 2022. Final searches done 04.05.2022. 
+* Platform: ProQuest, Advanced Search
+* Databases: ProQuest Education Database (1988-present).
+
+We expect good coverage from Web of Science, PubMed and CRISTIN, but a supplementary search in ProQuest Education Database was also run. ERIC was also considered, but does not contain affiliation information. The strategy consists of one part: 
+* A NOFT (anywhere but the full text) search for terms specific to medical education and medical groups in training, and a NOFT search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
+
+#### 1 - Medical trainees - 27024
+```
+(
+"medical educat*" OR "medical teach*" OR "medicine training" 
+OR "surgical educat*" OR "surgery educat*" OR "surgical train*" OR "surgery train*" 
+OR "medical school*" OR "medical degree*" OR "medicine degree*" OR "medical diploma*" 
+OR "medical student*" OR "medicine student*"
+OR "undergraduate medic*" OR "postgraduate medic*"  OR "post graduate medic*" 
+OR "medical clerkship*" OR "clinical clerkship*"
+OR "medical rotation*" OR "medical placement*" 
+OR "registrar*" OR "medical intern*"
+OR "resident physician*" OR "medical residen*" 
+OR "junior doctor*" OR "foundation doctor*" OR "trainee doctor*" OR "trainee surgeon*"
+)
+```
+
+#### 2 - Education terms - 257271
+```
+   ("clinical educat*" OR "clinical teach*"
+   OR "clinical rotation*" OR "clinical placement*"
+   OR "simulation training" OR "teaching simulation$"
+   OR "teaching practic*" OR "teaching method*" 
+   OR "teaching and learning" OR "problem based learning" OR "work based learning" 
+   OR "curricul*"
+   OR "educational supervis*" OR "undergraduate supervis*" OR "postgraduate supervis*" OR "post graduate supervis*" OR "clinical supervis*"
+   OR "undergraduate student$" OR "undergraduate training" 
+   OR "postgraduate student$" OR "postgraduate train*" OR "postgraduate speciali*" 
+   OR "graduate student$" OR "graduate train*" OR "graduate speciali*"
+   OR "continuing education" OR "on the job training"
+   ) 
+
+```
+
+#### 3 - Medical/doctor terms - 224880
+```
+("medicine" OR "medical" OR "medic$" OR "doctor$" OR "physician$" OR "surgeon$" OR "surgery" OR "psychiatry" OR "psychiatrist$")
+```
+
+#### 4 - 2 AND 3 - 16556
+```
+S2 AND S3
+```
+
+#### 5 - 1 OR 4 - 35808
+```
+S4 OR S1
+```
+
+#### 6 - Norway - 2220
+```
+au("Norway")
+```
+
+#### 6 - Limit results to Norway - 60
+```
+S5 AND S6
 ```
 
 
