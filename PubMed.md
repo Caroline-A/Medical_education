@@ -1,6 +1,6 @@
 # Searches in PubMed
 
-Search using the PubMed advanced search interface (https://pubmed.ncbi.nlm.nih.gov/advanced/), 04.05.2022.
+Search using the PubMed advanced search interface (https://pubmed.ncbi.nlm.nih.gov/advanced/), 04.05.2022. Combinations of different search lines were done using the "Actions" function. 
 
 Total search, combination of MeSH and free text (04.05.22) = xxx results. See below for explanation line for line.
 
@@ -29,7 +29,8 @@ OR "Program Development"[MeSH Terms]
 
 #### 3 - 1 AND 2 - Combined medical educational groups AND terms for education - 39026
 ```
-("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])  
+("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) 
+AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])  
 ```
 
 #### 4 - Medical education terms - 179174
@@ -39,7 +40,9 @@ OR "Program Development"[MeSH Terms]
 
 #### 5 - 4 OR 3 - Medical education terms OR the combined education + groups - 191064
 ```
-"education, medical"[MeSH Terms] OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])) 
+"education, medical"[MeSH Terms] 
+OR  (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) 
+    AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])) 
 ```
 
 #### 6 - Norway - 141968
@@ -49,7 +52,10 @@ OR "Program Development"[MeSH Terms]
 
 #### 7 - 6 AND 5 - 385
 ```
-"Norway"[Affiliation] AND ("education, medical"[MeSH Terms] OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]))) 
+"Norway"[Affiliation] 
+AND   ("education, medical"[MeSH Terms] 
+      OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) 
+      AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]))) 
 ```
 
 # Free text search
