@@ -1,8 +1,12 @@
-# Preliminary searches in Web of Science
+# Searches in Web of Science
 
-Preliminary test searches, done 15.03.2022. Web of Science Core Collection (SCIE 1945-present, SSCI 1956-present, AHCI 1975-present, ESCI 2017-present).
+Preliminary test searches, done 15.03.2022. Final searches done 04.05.2022. 
+* Platform: Web of Science
+* Databases: Web of Science Core Collection (SCIE 1945-present, SSCI 1956-present, AHCI 1975-present, ESCI 2017-present).
+* Filters for the final results:
+    * Document type: Articles, Review Articles, Book chapters. Books would have been included if there were any. 
 
-#### 1 - Medical education and medical groups in training - 135163
+#### 1 - Medical education and medical groups in training - 136776 (all documents)
 
 ```
 TS=
@@ -20,7 +24,8 @@ OR "junior doctor*" OR "foundation doctor*" OR "trainee doctor*" OR "trainee sur
 )
 ```
 
-#### 2 - Education and medical - 48104
+#### 2 - Education and medical - 50634 (all documents)
+
 `clinical` and generic education terms are combined with *medical/doctor* terms to avoid results from nursing/dentistry.
 
 ```
@@ -41,8 +46,10 @@ TS=
  )
 ```
 
-#### 3 - 1 OR 2 AND limit to Norway = 772
-See the results here: https://www.webofscience.com/wos/woscc/summary/2083ea21-13e1-4d82-b7fd-432d2b441ddd-357dd10e/relevance/1
+#### 3 - 1 OR 2 AND limit to Norway = 772, 708 after limiting by document type
+
+Search URL: https://www.webofscience.com/wos/woscc/summary/492a401c-9c5c-4613-bd78-9bd940eb7d85-357e0e8e/relevance/1
+
 ```
 (#1 OR #2) AND CU="Norway"
 ```
