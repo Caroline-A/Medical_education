@@ -228,34 +228,34 @@ OR "junior doctor*" OR "foundation doctor*" OR "trainee doctor*" OR "trainee sur
 )
 ```
 
-#### 2 - Education terms - 257271
+#### 2 - Education terms - 286039
 ```
    ("clinical educat*" OR "clinical teach*"
    OR "clinical rotation*" OR "clinical placement*"
-   OR "simulation training" OR "teaching simulation$"
+   OR "simulation training" OR "teaching simulation?"
    OR "teaching practic*" OR "teaching method*" 
    OR "teaching and learning" OR "problem based learning" OR "work based learning" 
    OR "curricul*"
    OR "educational supervis*" OR "undergraduate supervis*" OR "postgraduate supervis*" OR "post graduate supervis*" OR "clinical supervis*"
-   OR "undergraduate student$" OR "undergraduate training" 
-   OR "postgraduate student$" OR "postgraduate train*" OR "postgraduate speciali*" 
-   OR "graduate student$" OR "graduate train*" OR "graduate speciali*"
+   OR "undergraduate student?" OR "undergraduate training" 
+   OR "postgraduate student?" OR "postgraduate train*" OR "postgraduate speciali*" 
+   OR "graduate student?" OR "graduate train*" OR "graduate speciali*"
    OR "continuing education" OR "on the job training"
    ) 
 
 ```
 
-#### 3 - Medical/doctor terms - 224880
+#### 3 - Medical/doctor terms - 237367
 ```
-("medicine" OR "medical" OR "medic$" OR "doctor$" OR "physician$" OR "surgeon$" OR "surgery" OR "psychiatry" OR "psychiatrist$")
+("medicine" OR "medical" OR "medic?" OR "doctor?" OR "physician?" OR "surgeon?" OR "surgery" OR "psychiatry" OR "psychiatrist?")
 ```
 
-#### 4 - 2 AND 3 - 16556
+#### 4 - 2 AND 3 - 19134
 ```
 S2 AND S3
 ```
 
-#### 5 - 1 OR 4 - 35808
+#### 5 - 1 OR 4 - 37913
 ```
 S4 OR S1
 ```
@@ -265,7 +265,7 @@ S4 OR S1
 au("Norway")
 ```
 
-#### 6 - Limit results to Norway - 60
+#### 6 - Limit results to Norway - 61
 ```
 S5 AND S6
 ```
