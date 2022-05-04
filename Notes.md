@@ -23,14 +23,6 @@ We can retain the WOSID/PMID throughout the screening process by
 4. Import into Rayyan via RefMan (Export, txt, Refman output style)
 5. Export from Rayyan using EndNote again. DOI is lost, but the URL field is retained.  
 
-## Term notes, consider adding
-* problem based learning
-* work-based learning
-* on the job training
-* psychiatry/psychiatrist
-* "undergraduate supervis*" OR "postgraduate supervis*" OR "clinical supervis*"
-* "post graduate student$" OR "post graduate training" OR "post graduate speciali*"
-
 ## Example articles to test search against
 Should be found
 * Kristin Wigen, Are Holen & Øyvind Ellingsen (2003) Predicting academic success by group behaviour in PBL, Medical Teacher, 25:1, 32-37, DOI: 10.1080/0142159021000061396
