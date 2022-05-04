@@ -3,6 +3,7 @@
 Contents
 * Searches in Web of Science
 * Searches in PubMed
+* Searches in ProQuest Education Database
 * Searches in CRISTIN - the national CRIS (current research information system) in Norway. This data source has almost complete coverage of scientific publications from all member institutions 2011-2021, regardless of language or format. All major higher education institutions as well as many research institutes and public health regions are members. 
 
 Searches are run either on publication level data (e.g. title, abstract or keyword, depending on database) or journal. For the journal searches, we use the 24 journals classed as central in Medical Education from  Maggio, LA, Ninkov, A, Frank, JR, Costello, JA, Artino, AR. Delineating the field of medical education: Bibliometric research approach(es). Med Educ. 2022; 56( 4): 387- 394. https://doi.org/10.1111/medu.14677. 
@@ -275,13 +276,15 @@ S5 AND S6
 
 * Platform/tool: The datasource was accessed via a Tableau-based server available via login to Norwegian Cristin institutions ("DUCT"). The data is also available publicly via an API (https://www.cristin.no/tjenester/api/). Searches were run using Tableau (v. 2021.4), by creating an IF CONTAINS variable in the data. NOTE: Phrases/words are automatically truncated both forwards and backwards from the start/end of the phrase, unless manually prevented by including a space before/after.
 * Database: We used a file on the server which contains all outputs in CRISTIN, FOR_data_sted_total. This file thus contains a almost complete record of all Norwegian scientific publications from CRISTIN institutions from 2011 up to and including 2021. All major higher education institutions as well as many research institutes and public health regions are members. 
-* Filters: Searched for all publications within Cristin timeframe (2011-2020) within a filter called "NVI subset". "NVI subset" limits the set to publications which are deemed "scientific" in the national system. The definition of "scientific" effectively covers the publication types interesting for our review; the criteria are that the work gives new insight, is presented in a form which makes the results verifiable or usable in new research, is in a language and has a distribution which makes it accessible for the majority of researchers interested in it, and is in a publication channel with peer review routines (CRISTIN [n.d.] Reporting instructions (NVI) . https://www.cristin.no/english/resources/reporting-instructions/ (retrieved 02.06.2022)). 
+* Filters: Searched for all publications within Cristin timeframe (2011-2020) within a filter called "NVI subset". "NVI subset" limits the set to publications which are deemed "scientific" in the national system. The definition of "scientific" effectively covers the publication types interesting for our review; the criteria are that the work gives new insight, is presented in a form which makes the results verifiable or usable in new research, is in a language and has a distribution which makes it accessible for the majority of researchers interested in it, and is in a publication channel with peer review routines (CRISTIN (updated Oct 2020) Reporting instructions (NVI) . https://www.cristin.no/english/resources/reporting-instructions/ (retrieved 02.06.2022)). 
 
 The strategy in CRISTIN takes the same basic form as the Web of Science and PubMed strategies, but was adapted to the fields available in this data source. The strategy consists of two parts: 
 * A journal search
 * A title search for terms specific to medical education and medical groups in training, and a title search that combines generic terms for education and training with terms for medicine, doctors and specialities. In Norwegian, we also use journal classification to help with this search (see under).
 
-### Journal search
+Total results = 488
+
+### Journal search = 95
 Note that this search will also find any journals containing "academic medicine" or "medical education" in their names due to the automatic truncation.
 
 ```
@@ -319,7 +322,7 @@ In English, we have searched for terms in the title using the same two part appr
 
 In Norwegian we can take a slighty broader approach as there is less research. We take the same two part approach as before, but also include generic education terms in titles in publications in journals classified as in the medical field by the Norwegian Publishing Indicator (NPI subject fields https://npi.hkdir.no/fagfeltoversikt). This approach is not used in English as it is too broad - terms such as "assessment" are so generic (e.g. there are lots of irrelevant results about medical assessments when searching for "assessment" in a oncology journal). 
 
-#### Title search, English
+#### Title search, English = 328
 
 ```
 IF (
@@ -366,7 +369,7 @@ ELSE "non"
 END
 ```
 
-#### Title search, Norwegian
+#### Title search, Norwegian = 94
 
 ``` 
 IF ((
@@ -376,7 +379,7 @@ OR CONTAINS(LOWER([result_title]),	"undervis"	)
 OR CONTAINS(LOWER([result_title]),	"læring"	)
 OR CONTAINS(LOWER([result_title]),	"studieplan"	)
 OR CONTAINS(LOWER([result_title]),	"studieprogr"	)
-OR CONTAINS(LOWER([result_title]),	"student"	)
+OR CONTAINS(LOWER([result_title]),	"studenter"	)
 OR CONTAINS(LOWER([result_title]),	"foreles"	)
 OR CONTAINS(LOWER([result_title]),	"klasserom"	)
 OR CONTAINS(LOWER([result_title]),	" vurdering"	)
