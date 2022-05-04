@@ -19,13 +19,13 @@ Publications about medical education, including continuing and work-based educat
 
 Step 1: The CRISTIN results cannot be imported into EndNote. Therefore I did a deduplication in Tableau before any other work. I took the Web of Science results and joined this data to the CRISTIN data, by exact matching on the doi. This detected 161 duplicates between the CRISTIN and WoS sets, that were removed. I then did the same with PubMed, where there were 134 duplicates. Once both were removed, there remained 304 results from the CRISTIN set (of 488 originally). These were then exported to Excel, and added to Zotero using the doi-lookup function (for those with doi). The remaining references were added manually. 297 were added (7 were removed for being obvious conference proceedings) - these were then exported from Zotero, and added to EndNote along with the exports from PubMed, WoS and ProQuest.
 
-Step 2: 
+Step 2: Followed first steps of the procedure in Bramer, W. M., Giustini, D., de Jonge, G. B., Holland, L., & Bekhuis, T. (2016). De-duplication of database search results for systematic reviews in EndNote. Journal of the Medical Library Association : JMLA, 104(3), 240–243. https://doi.org/10.3163/1536-5050.104.3.014. Then used doi (together with manual checking). 
 
 #### Import/Export to Rayyan
 We can retain the WOSID/PMID throughout the screening process by 
 1. Importing to EndNote - PMID and WOSID both end up correctly in the Accession number field. In Zotero they end up in different fields.
 2. Deduplicating
-3. Copying Accession number field contents over to the URL field. Could theoretically do this with the doi too?
+3. Copying Accession number field contents over to the URL field. Could theoretically do this with the doi too.
 4. Import into Rayyan via RefMan (Export, txt, Refman output style)
 5. Export from Rayyan using EndNote again. DOI is lost, but the URL field is retained.  
 
