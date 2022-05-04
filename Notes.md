@@ -25,7 +25,7 @@ Step 2: Followed first steps of the procedure in Bramer, W. M., Giustini, D., de
 We can retain the WOSID/PMID throughout the screening process by 
 1. Importing to EndNote - PMID and WOSID both end up correctly in the Accession number field. In Zotero they end up in different fields.
 2. Deduplicating
-3. Copying Accession number field contents over to the URL field. Could theoretically do this with the doi too.
+3. Copying Accession number field contents over to the URL field, as well as PMCID. Could theoretically do this with the doi too.
 4. Import into Rayyan via RefMan (Export, txt, Refman output style)
 5. Export from Rayyan using EndNote again. DOI is lost, but the URL field is retained.  
 
