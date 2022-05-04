@@ -5,17 +5,30 @@ Contents
 * Searches in PubMed
 * Searches in CRISTIN - the national CRIS (current research information system) in Norway. This data source has almost complete coverage of scientific publications from all member institutions 2011-2021, regardless of language or format. All major higher education institutions as well as many research institutes and public health regions are members. 
 
+Searches are run either on publication level data (e.g. title, abstract or keyword, depending on database) or journal. For the journal searches, we use the 24 journals classed as central in Medical Education from  Maggio, LA, Ninkov, A, Frank, JR, Costello, JA, Artino, AR. Delineating the field of medical education: Bibliometric research approach(es). Med Educ. 2022; 56( 4): 387- 394. https://doi.org/10.1111/medu.14677. 
+
+We do not only rely on journal search as most medical education research is not published in medical education journals (Kyungjoon Lee, Julia S. Whelan, Nancy H. Tannery, Steven L. Kanter & Antoinette S. Peters (2013) 50 years of publication in the field of medical education, Medical Teacher, 35:7, 591-598, https://doi.org/10.3109/0142159X.2013.786168). 
+
 ## Searches in Web of Science
 
 Preliminary test searches done March 2022. Final searches done 04.05.2022. 
 * Platform: Web of Science
 * Databases: Web of Science Core Collection (SCIE 1945-present, SSCI 1956-present, AHCI 1975-present, ESCI 2017-present).
 * Filters for the final results:
-    * Document type: Articles, Review Articles, Book chapters. Books would have been included if there were any found. 
+    * Document type: Articles, Review Articles, Book chapters, Early Access. Books would have been included if there were any found. 
 
-The strategy consists of two parts: One part is a search for terms specific to medical education and medical groups in training; a second part combines more generic terms for education and training with terms for medicine, doctors and specialities. The same general approach is used in PubMed, with adjustments for use of MeSH terms. 
+The strategy consists of two parts: 
+* A journal search
+* A topic (title-abstract-keyword-keywordPlus) search for terms specific to medical education and medical groups in training, and a title-abstract-keyword search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
 
-#### 1 - Medical education and medical groups in training - 136776 (all documents)
+#### 1 - Journal search - 44404 (all docs)
+Of the 24 journals, 2 were not found in Web of Science (Canadian medical education journal and Journal of graduate medical education).
+
+```
+SO = (ACADEMIC MEDICINE OR ADVANCES IN HEALTH SCIENCES EDUCATION OR ADVANCES IN MEDICAL EDUCATION "AND" PRACTICE OR AFRICAN JOURNAL OF HEALTH PROFESSIONS EDUCATION OR ANATOMICAL SCIENCES EDUCATION OR BMC MEDICAL EDUCATION OR BMJ SIMULATION TECHNOLOGY ENHANCED LEARNING OR CLINICAL TEACHER OR EDUCATION FOR HEALTH OR FOCUS ON HEALTH PROFESSIONAL EDUCATION A MULTIDISCIPLINARY JOURNAL OR GMS JOURNAL FOR MEDICAL EDUCATION OR INTERNATIONAL JOURNAL OF MEDICAL EDUCATION OR JOURNAL OF CONTINUING EDUCATION IN THE HEALTH PROFESSIONS OR JOURNAL OF EDUCATIONAL EVALUATION FOR HEALTH PROFESSIONS OR JOURNAL OF MEDICAL EDUCATION "AND" CURRICULAR DEVELOPMENT OR JOURNAL OF SURGICAL EDUCATION OR MEDICAL EDUCATION OR MEDICAL EDUCATION ONLINE OR MEDICAL TEACHER OR PERSPECTIVES ON MEDICAL EDUCATION OR SIMULATION IN HEALTHCARE JOURNAL OF THE SOCIETY FOR SIMULATION IN HEALTHCARE OR TEACHING "AND" LEARNING IN MEDICINE)
+```
+
+#### 2 - Topic search: Medical education and medical trainees - 136888 (all docs)
 
 ```
 TS=
@@ -24,7 +37,7 @@ TS=
 OR "surgical educat*" OR "surgery educat*" OR "surgical train*" OR "surgery train*" 
 OR "medical school*" OR "medical degree*" OR "medicine degree*" OR "medical diploma*" 
 OR "medical student*" OR "medicine student*"
-OR "undergraduate medic*" OR "postgraduate medic*" 
+OR "undergraduate medic*" OR "postgraduate medic*"  OR "post graduate medic*" 
 OR "medical clerkship*" OR "clinical clerkship*"
 OR "medical rotation*" OR "medical placement*" 
 OR "registrar*" OR "medical intern*"
@@ -33,7 +46,7 @@ OR "junior doctor*" OR "foundation doctor*" OR "trainee doctor*" OR "trainee sur
 )
 ```
 
-#### 2 - Education and medical - 50634 (all documents)
+#### 3 - Topic search: Education and medical - 51884 (all docs)
 
 `clinical` and generic education terms are combined with *medical/doctor* terms to avoid results from nursing/dentistry.
 
@@ -46,21 +59,22 @@ TS=
    OR "teaching practic*" OR "teaching method*" 
    OR "teaching and learning" OR "problem based learning" OR "work based learning" 
    OR "curricul*"
-   OR "educational supervis*" OR "undergraduate supervis*" OR "postgraduate supervis*" OR "clinical supervis*"
+   OR "educational supervis*" OR "undergraduate supervis*" OR "postgraduate supervis*" OR "post graduate supervis*" OR "clinical supervis*"
    OR "undergraduate student$" OR "undergraduate training" 
-   OR "postgraduate student$" OR "postgraduate training" OR "postgraduate speciali*"
-   OR "continuing education" OR "on the job training" OR "in work training"
+   OR "postgraduate student$" OR "postgraduate train*" OR "postgraduate speciali*" 
+   OR "graduate student$" OR "graduate train*" OR "graduate speciali*"
+   OR "continuing education" OR "on the job training"
    ) 
    AND ("medicine" OR "medical" OR "medic$" OR "doctor$" OR "physician$" OR "surgeon$" OR "surgery" OR "psychiatry" OR "psychiatrist$")
  )
 ```
 
-#### 3 - 1 OR 2 AND limit to Norway = 772, 708 after limiting by document type
+#### 4 - 1 OR 2 OR 3 AND Norway = 841, 772 after limiting by document type
 
-Search URL: https://www.webofscience.com/wos/woscc/summary/492a401c-9c5c-4613-bd78-9bd940eb7d85-357e0e8e/relevance/1
+Search URL: https://www.webofscience.com/wos/woscc/summary/32d54937-9f7c-4704-b391-2e68097e39d3-35832cf8/relevance/1
 
 ```
-(#1 OR #2) AND CU="Norway"
+(#1 OR #2 OR #3) AND CU="Norway"
 ```
 
 
@@ -72,7 +86,9 @@ Preliminary test searches done March 2022. Final searches done 04.05.2022.
 * Filters for the final results:
     * Document type:  
 
-The strategy consists of two parts: One part is a search for terms specific to medical education and medical groups in training; a second part combines more generic terms for education and training with terms for medicine, doctors and specialities. The same general approach is used in Web of Science (with adjustments for the lack of subject headings).  
+The strategy consists of two parts: 
+* A MeSH search for terms specific to medical education and medical groups in training, and a MeSH search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
+* A title-abstract search for terms specific to medical education and medical groups in training, and a title-abstract search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
 
 Final PubMed search, combination of MeSH and free text, is shown below (04.05.22) = xxx results. See below for explanation line for line.
 
@@ -201,12 +217,12 @@ Clinical and generic education terms are combined with medical/doctor terms to a
 * Database: We used a file on the server which contains all outputs in CRISTIN, FOR_data_sted_total. This file thus contains a almost complete record of all Norwegian scientific publications from CRISTIN institutions from 2011 up to and including 2021. All major higher education institutions as well as many research institutes and public health regions are members. 
 * Filters: Searched for all publications within Cristin timeframe (2011-2020) within a filter called "NVI subset". "NVI subset" limits the set to publications which are deemed "scientific" in the national system. The definition of "scientific" effectively covers the publication types interesting for our review; the criteria are that the work gives new insight, is presented in a form which makes the results verifiable or usable in new research, is in a language and has a distribution which makes it accessible for the majority of researchers interested in it, and is in a publication channel with peer review routines (CRISTIN [n.d.] Reporting instructions (NVI) . https://www.cristin.no/english/resources/reporting-instructions/ (retrieved 02.06.2022)). 
 
-The strategy in CRISTIN takes the same basic form as the Web of Science and PubMed strategies, but was adapted to the fields available in this data source. CRISTIN does not contain abstracts, so free text searches can only be run on publication titles. Therefore, in addition to the title search, two other elements were included: a journal search, and combining education terms with medical journals in the title search. 
+The strategy in CRISTIN takes the same basic form as the Web of Science and PubMed strategies, but was adapted to the fields available in this data source. The strategy consists of two parts: 
+* A journal search
+* A title search for terms specific to medical education and medical groups in training, and a title search that combines generic terms for education and training with terms for medicine, doctors and specialities. In Norwegian, we also use journal classification to help with this search (see under).
 
 ### Journal search
-We searched for 24 central journals in Medical Education, taken from  Maggio, LA, Ninkov, A, Frank, JR, Costello, JA, Artino, AR. Delineating the field of medical education: Bibliometric research approach(es). Med Educ. 2022; 56( 4): 387- 394. https://doi.org/10.1111/medu.14677. Note that this search will also find any journals containing "academic medicine" or "medical education" in their names due to the automatic truncation.
-
-An issue using journals is that most medical education research is not published in medical education journals (Kyungjoon Lee, Julia S. Whelan, Nancy H. Tannery, Steven L. Kanter & Antoinette S. Peters (2013) 50 years of publication in the field of medical education, Medical Teacher, 35:7, 591-598, https://doi.org/10.3109/0142159X.2013.786168). Thus we do not rely only on this approach. 
+Note that this search will also find any journals containing "academic medicine" or "medical education" in their names due to the automatic truncation.
 
 ```
 IF CONTAINS(LOWER([journal]),	"academic medicine"	)
