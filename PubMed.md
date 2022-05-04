@@ -1,23 +1,25 @@
-# Preliminary searches in PubMed
+# Searches in PubMed
 
-Current suggestion, combination of MeSH and free text option 1 (18.03.22) = 745 results. See below for explanation line for line.
+Search using the PubMed advanced search interface (https://pubmed.ncbi.nlm.nih.gov/advanced/), 04.05.2022.
+
+Total search, combination of MeSH and free text (04.05.22) = xxx results. See below for explanation line for line.
 
 ```
-("Norway"[Affiliation] AND ((("medicine"[Title/Abstract] OR "medical"[Title/Abstract] OR "medic"[Title/Abstract] OR "medics"[Title/Abstract] OR "doctor"[Title/Abstract] OR "doctors"[Title/Abstract] OR "physician*"[Title/Abstract] OR "surgeon*"[Title/Abstract] OR "surgery"[Title/Abstract]) AND ("clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract] OR "teaching practic*"[Title/Abstract] OR "teaching method*"[Title/Abstract] OR "teaching and learning"[Title/Abstract] OR "curricul*"[Title/Abstract] OR "educational supervis*"[Title/Abstract] OR "undergraduate student*"[Title/Abstract] OR "undergraduate train*"[Title/Abstract] OR "postgraduate student*"[Title/Abstract] OR "postgraduate train*"[Title/Abstract] OR "postgraduate speciali*"[Title/Abstract] OR "continuing education"[Title/Abstract])) OR ("medical educat*"[Title/Abstract] OR "medical teach*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "surgical educat*"[Title/Abstract] OR "surgery educat*"[Title/Abstract] OR "surgical train*"[Title/Abstract] OR "surgery train*"[Title/Abstract] OR "medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]))) OR ("Norway"[Affiliation] AND ("education, medical"[MeSH Terms] OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])))) 
+
 ```
 
 # MeSH search
 
-Ideas from https://sites.google.com/site/mededlit2/tidbits. Preliminary search 15.03.2022:
+Ideas from https://sites.google.com/site/mededlit2/tidbits. 
 
-#### 1 - Medical education groups - 51771 
+#### 1 - Medical education groups - 52392 
 ```
 "students, medical"[MeSH Terms] 
 OR "students, premedical"[MeSH Terms]
 OR "faculty, medical"[MeSH Terms] 
 ```
 
-#### 2 - Terms for education - 883870
+#### 2 - Terms for education - 888706
 The education MeSH term includes assessment, simulation training, etc.
 ```
 "Education"[MeSH Terms] 
@@ -25,27 +27,27 @@ OR "models, educational"[MeSH Terms]
 OR "Program Development"[MeSH Terms] 
 ```
 
-#### 3 - 1 AND 2 - Combined medical educational groups AND terms for education - 38624
+#### 3 - 1 AND 2 - Combined medical educational groups AND terms for education - 39026
 ```
 ("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])  
 ```
 
-#### 4 - Medical education terms - 178219
+#### 4 - Medical education terms - 179174
 ```
 "education, medical"[MeSH Terms] 
 ```
 
-#### 5 - 4 OR 3 - Medical education terms OR the combined education + groups - 189924
+#### 5 - 4 OR 3 - Medical education terms OR the combined education + groups - 191064
 ```
 "education, medical"[MeSH Terms] OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms])) 
 ```
 
-#### 6 - Norway - 140260
+#### 6 - Norway - 141968
 ```
 "Norway"[Affiliation] 
 ```
 
-#### 7 - 6 AND 5 - 382
+#### 7 - 6 AND 5 - 385
 ```
 "Norway"[Affiliation] AND ("education, medical"[MeSH Terms] OR (("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms]) AND ("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]))) 
 ```
