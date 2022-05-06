@@ -1,17 +1,5 @@
 # Notes
 
-## Scope
-
-Publications about medical education, including continuing and work-based education, and including research about people undergoing medical training (e.g. their mental health). 
-
-1. Scientific articles (review and original) - not comments, editorials etc.
-2. Medicine only, including medicine, surgery, psychiatry (not nursing, veterinary, dental, physio etc.)
-3. All levels of education
-    * Foundational / Undergraduate / Premed
-    * Post-graduate / Residency / Junior doctor
-    * Continuing / Specialist / Speciality Registrar
-4. From 1991? (the last 3 decades)
-
 ## Analysis
 * Consider decadal
 
@@ -36,18 +24,6 @@ Should be found
 * Kristin Wigen, Are Holen & Øyvind Ellingsen (2003) Predicting academic success by group behaviour in PBL, Medical Teacher, 25:1, 32-37, DOI: 10.1080/0142159021000061396
 * Gude, T., Hjortdahl, P., Anvik, T., Bærheim, A., Fasmer, O. B., Grimstad, H., ... & Vaglum, P. (2005). Does change from a traditional to a new medical curriculum reduce negative attitudes among students? A quasi-experimental study. Medical teacher, 27(8), 737-739.
 * Smeby, S. S., Espeland, T., Berg, E. A. R., Samstad, E., Lillebo, B., & Slørdahl, T. S. (2021). Examining the educational impact of the mini-CEX: a randomised controlled study. BMC.
-
-## Database choice
-
-Using PubMed and Web of Science. Cristin can also be used back to 2011. 
-
-In the Education database (ProQuest) you can search within author addresses using the AU field - maybe worth testing. https://bibsys-almaprimo.hosted.exlibrisgroup.com/permalink/f/1k1ulm2/BIBSYS_ILS71554709860002201
-
-I tried with ERIC but had the issue that you can't search within affiliations, so it is hard to limit to Norway. It seems affiliations are not indexed.
-I tried using the Geographical filter but this was definately an underestimate. Thus, although ERIC would be a great database to search, I don't think we can use it without going through 10000 results manually.
-
-![image](https://user-images.githubusercontent.com/42732381/158985625-77e121af-eaa0-481c-891d-7b626598125e.png)
-
 
 ## Indexing in PubMed of central journals
 The coverage comment below is from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
