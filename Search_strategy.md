@@ -278,7 +278,7 @@ S4 OR S1
 au("Norway")
 ```
 
-#### 6 - Limit results to Norway - 61
+#### 7 - Limit results to Norway - 61
 ```
 S5 AND S6
 ```
