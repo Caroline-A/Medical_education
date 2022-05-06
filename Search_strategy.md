@@ -1,16 +1,28 @@
 # Search history
 
 Contents
-* Searches in Web of Science
-* Searches in PubMed
-* Searches in ProQuest Education Database
-* Searches in CRISTIN - the national CRIS (current research information system) in Norway. This data source has almost complete coverage of scientific publications from all member institutions 2011-2021, regardless of language or format. All major higher education institutions as well as many research institutes and public health regions are members. 
+1. Scope and general search notes
+2. Searches in Web of Science
+3. Searches in PubMed
+4. Searches in ProQuest Education Database
+5. Searches in CRISTIN 
+
+## 1. Scope and general search notes
+
+Publications about medical education, including continuing and work-based education, and including research about people undergoing medical training (e.g. their mental health). 
+
+1. Scientific articles (review and original) - not comments, editorials etc.
+2. Medicine only, including medicine, surgery, psychiatry (not nursing, veterinary, dental, physio etc.)
+3. All levels of education
+    * Foundational / Undergraduate / Premed
+    * Post-graduate / Residency / Junior doctor
+    * Continuing / Specialist / Speciality Registrar
 
 Searches are run either on publication level data (e.g. title, abstract or keyword, depending on database) or journal. For the journal searches, we use the 24 journals classed as central in Medical Education from  Maggio, LA, Ninkov, A, Frank, JR, Costello, JA, Artino, AR. Delineating the field of medical education: Bibliometric research approach(es). Med Educ. 2022; 56( 4): 387- 394. https://doi.org/10.1111/medu.14677. 
 
 We do not only rely on journal search as most medical education research is not published in medical education journals (Kyungjoon Lee, Julia S. Whelan, Nancy H. Tannery, Steven L. Kanter & Antoinette S. Peters (2013) 50 years of publication in the field of medical education, Medical Teacher, 35:7, 591-598, https://doi.org/10.3109/0142159X.2013.786168). 
 
-## Searches in Web of Science
+## 2. Searches in Web of Science
 
 Preliminary test searches done March 2022. Final searches done 04.05.2022. 
 * Platform: Web of Science
@@ -82,7 +94,7 @@ Search URL: https://www.webofscience.com/wos/woscc/summary/32d54937-9f7c-4704-b3
 ```
 
 
-## Searches in PubMed
+## 3. Searches in PubMed
 
 Preliminary test searches done March 2022. Final searches done 04.05.2022. 
 * Platform: PubMed advanced search interface (https://pubmed.ncbi.nlm.nih.gov/advanced/). Combinations of different search lines were done using the "Actions" function. 
@@ -204,7 +216,7 @@ Clinical and generic education terms are combined with medical/doctor terms to a
 ("Norway"[Affiliation] AND ("education, medical"[MeSH Terms] OR (("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]) AND ("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms])))) OR ("Norway"[Affiliation] AND ((("medicine"[Title/Abstract] OR "medical"[Title/Abstract] OR "medic"[Title/Abstract] OR "medics"[Title/Abstract] OR "doctor"[Title/Abstract] OR "doctors"[Title/Abstract] OR "physician*"[Title/Abstract] OR "surgeon*"[Title/Abstract] OR "surgery"[Title/Abstract] OR "psychiatry"[Title/Abstract] OR "psychiatrist*"[Title/Abstract]) AND ("clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract] OR "teaching practic*"[Title/Abstract] OR "teaching method*"[Title/Abstract] OR "teaching and learning"[Title/Abstract] OR "problem based learning"[Title/Abstract] OR "work based learning"[Title/Abstract] OR "curricul*"[Title/Abstract] OR "educational supervis*"[Title/Abstract] OR "postgraduate supervis*"[Title/Abstract] OR "clinical supervis*"[Title/Abstract] OR "undergraduate student*"[Title/Abstract] OR "undergraduate train*"[Title/Abstract] OR "postgraduate student*"[Title/Abstract] OR "postgraduate train*"[Title/Abstract] OR "postgraduate speciali*"[Title/Abstract] OR "graduate student*"[Title/Abstract] OR "graduate train*"[Title/Abstract] OR "graduate speciali*"[Title/Abstract] OR "continuing education"[Title/Abstract] OR "on the job training"[Title/Abstract])) OR ("medical educat*"[Title/Abstract] OR "medical teach*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "surgical educat*"[Title/Abstract] OR "surgery educat*"[Title/Abstract] OR "surgical train*"[Title/Abstract] OR "surgery train*"[Title/Abstract] OR "medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "post graduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]))) 
 ```
 
-## Searches in ProQuest Education
+## 4. Searches in ProQuest Education
 
 Preliminary test searches done April 2022. Final searches done 04.05.2022. 
 * Platform: ProQuest, Advanced Search
@@ -272,10 +284,12 @@ S5 AND S6
 ```
 
 
-## Search in CRISTIN via Tableau DUCT
+## 5. Search in CRISTIN via Tableau DUCT
+
+CRISTIN is the national CRIS (current research information system) in Norway. This data source has almost complete coverage of scientific publications from all member institutions 2011-2021, regardless of language or format. All major higher education institutions as well as many research institutes and public health regions are members.
 
 * Platform/tool: The datasource was accessed via a Tableau-based server available via login to Norwegian Cristin institutions ("DUCT"). The data is also available publicly via an API (https://www.cristin.no/tjenester/api/). Searches were run using Tableau (v. 2021.4), by creating an IF CONTAINS variable in the data. NOTE: Phrases/words are automatically truncated both forwards and backwards from the start/end of the phrase, unless manually prevented by including a space before/after.
-* Database: We used a file on the server which contains all outputs in CRISTIN, FOR_data_sted_total. This file thus contains a almost complete record of all Norwegian scientific publications from CRISTIN institutions from 2011 up to and including 2021. All major higher education institutions as well as many research institutes and public health regions are members. 
+* Database: We used a file on the server which contains all outputs in CRISTIN, FOR_data_sted_total. This file thus contains a almost complete record of all Norwegian scientific publications from CRISTIN institutions from 2011 up to and including 2021. 
 * Filters: Searched for all publications within Cristin timeframe (2011-2020) within a filter called "NVI subset". "NVI subset" limits the set to publications which are deemed "scientific" in the national system. The definition of "scientific" effectively covers the publication types interesting for our review; the criteria are that the work gives new insight, is presented in a form which makes the results verifiable or usable in new research, is in a language and has a distribution which makes it accessible for the majority of researchers interested in it, and is in a publication channel with peer review routines (CRISTIN (updated Oct 2020) Reporting instructions (NVI) . https://www.cristin.no/english/resources/reporting-instructions/ (retrieved 02.06.2022)). 
 
 The strategy in CRISTIN takes the same basic form as the Web of Science and PubMed strategies, but was adapted to the fields available in this data source. The strategy consists of two parts: 
