@@ -22,20 +22,18 @@ Should be found
 * Gude, T., Hjortdahl, P., Anvik, T., Bærheim, A., Fasmer, O. B., Grimstad, H., ... & Vaglum, P. (2005). Does change from a traditional to a new medical curriculum reduce negative attitudes among students? A quasi-experimental study. Medical teacher, 27(8), 737-739.
 * Smeby, S. S., Espeland, T., Berg, E. A. R., Samstad, E., Lillebo, B., & Slørdahl, T. S. (2021). Examining the educational impact of the mini-CEX: a randomised controlled study. BMC.
 
-## Indexing in PubMed
+## Limitations
 
 ### Affiliations
 
-PubMed is not the best source for matching publications to country of the authors because they only indexed the first-author affiliation between 1988-2013, and from 2014 began to index the affiliation for all authors (https://www.nlm.nih.gov/bsd/mms/medlineelements.html#ad). At this point, they also stopped quality-control of the affiliation data, and affiliation data is dependent on what the publisher submits. This is difficult to do anything with as we cannot hand search all relevant works for Norwegian affiliations; but as many are covered in Web of Science, we have a good source there. 
+PubMed is not the best source for matching publications to country of the authors because they only indexed the first-author affiliation between 1988-2013, and from 2014 began to index the affiliation for all authors (https://www.nlm.nih.gov/bsd/mms/medlineelements.html#ad). At this point, they also stopped quality-control of the affiliation data, and affiliation data is dependent on what the publisher submits. This is difficult to do anything with as we cannot hand search all relevant works for Norwegian affiliations; but some are covered in Web of Science, and the data there is assumed to be of better quality there. The main limitation is therefore that we may miss publications pre-2014 which had Norwegian-affiliated authors in a non-first-author position. 
+See https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4816483/ and https://dl.acm.org/doi/abs/10.1007/s11192-018-2714-x
 
-However, this is a problem for the potentially very relevant journal *Tidsskrift for den Norske Legeforening* (TNLF). This journal seems to be indexed with **incomplete affiliation data** in PubMed. The vast majority of works lack country in the affiliation, and a good number lack all affiliation data. ca. 34000 works from this journal are found in PubMed, but just over 1100 are found when combined with `"Norway"[Affiliation]`. This journal is not well covered in Web of Science, with ca. 30 articles indexed in total. When doing our search in PubMed:
+There is however a significant affiliation problem for the relevant journal *Tidsskrift for den Norske Legeforening* (TNLF). This journal seems to be indexed with **incomplete affiliation data** in PubMed. The vast majority of works lack country in the affiliation, and a good number lack all affiliation data. ca. 34000 works from this journal are found in PubMed, but just over 1100 are found when the journal is combined with `"Norway"[Affiliation]`. This journal is poorly covered in Web of Science: only 4756 works from the journal are covered as of today (09/11/22), with 3145 being found when also limiting by `CU="Norway"`. It is mostly not covered until 2017, and thus Web of Science can't be used as an alternative data source. When doing our search in PubMed:
 * With affiliation = Norway, 32 works are found by the MedEd search in TNLF.
 * Without affiliation = Norway, 882 works are found by the MedEd search in TNLF.
 
-See also https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4816483/
-and https://dl.acm.org/doi/abs/10.1007/s11192-018-2714-x
-
-### Central Medical Education journals
+### Indexing of central Medical Education journals
 The coverage comment below is from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
 > "While all of these journals are indexed in PubMed, seven of them are not included in their entirety, namely: 
 > Advances in Health Sciences Education, Canadian Medical Education Journal, Clinical Teacher, Medical Education Online, Medical Teacher, Teaching and Learning in Medicine, and The Journal of Continuing Education in the Health Professions. For example, Clinical Teacher first appeared in PubMed in 2010, but the journal started publishing articles in 2003.".
