@@ -1,9 +1,6 @@
 # Notes
 
-## Analysis
-* Consider decadal
-
-#### Deduplication
+## Deduplication process
 
 Step 1: The CRISTIN results cannot be imported into EndNote. Therefore I did a deduplication in Tableau before any other work. I took the Web of Science results and joined this data to the CRISTIN data, by exact matching on the doi. This detected 161 duplicates between the CRISTIN and WoS sets, that were removed. I then did the same with PubMed, where there were 134 duplicates. Once both were removed, there remained 304 results from the CRISTIN set (of 488 originally). These were then exported to Excel, and added to Zotero using the doi-lookup function (for those with doi). The remaining references were added manually. 297 were added (7 were removed for being obvious conference proceedings) - these were then exported from Zotero, and added to EndNote along with the exports from PubMed, WoS and ProQuest.
 
@@ -11,7 +8,7 @@ Step 2: After all was in EndNote, I followed first steps of the procedure in Bra
 
 I then ran "Find reference updates" on the final set, to find PubMed IDs for any records that did not have a WOS ID or PubMed ID in the Accession Number field. Other data was added for empty fields (e.g. Keywords) or overwritten in the case of ProQuest records (to reformat the DOI to a standard format, and get the PubMed accession number instead of ProQuest for later analysis). 
 
-#### Import/Export to Rayyan
+## Import/Export to Rayyan
 We can retain the WOSID/PMID throughout the screening process by 
 1. Importing to EndNote - PMID and WOSID both end up correctly in the Accession number field. In Zotero they end up in different fields.
 2. Deduplicating
@@ -25,7 +22,20 @@ Should be found
 * Gude, T., Hjortdahl, P., Anvik, T., Bærheim, A., Fasmer, O. B., Grimstad, H., ... & Vaglum, P. (2005). Does change from a traditional to a new medical curriculum reduce negative attitudes among students? A quasi-experimental study. Medical teacher, 27(8), 737-739.
 * Smeby, S. S., Espeland, T., Berg, E. A. R., Samstad, E., Lillebo, B., & Slørdahl, T. S. (2021). Examining the educational impact of the mini-CEX: a randomised controlled study. BMC.
 
-## Indexing in PubMed of central journals
+## Indexing in PubMed
+
+### Affiliations
+
+PubMed is not the best source for matching publications to country of the authors because they only indexed the first-author affiliation between 1988-2013, and from 2014 began to index the affiliation for all authors (https://www.nlm.nih.gov/bsd/mms/medlineelements.html#ad). At this point, they also stopped quality-control of the affiliation data, and affiliation data is dependent on what the publisher submits. This is difficult to do anything with as we cannot hand search all relevant works for Norwegian affiliations; but as many are covered in Web of Science, we have a good source there. 
+
+However, this is a problem for the potentially very relevant journal *Tidsskrift for den Norske Legeforening* (TNLF). This journal seems to be indexed with **incomplete affiliation data** in PubMed. The vast majority of works lack country in the affiliation, and a good number lack all affiliation data. ca. 34000 works from this journal are found in PubMed, but just over 1100 are found when combined with `"Norway"[Affiliation]`. This journal is not well covered in Web of Science, with ca. 30 articles indexed in total. When doing our search in PubMed:
+* With affiliation = Norway, 32 works are found by the MedEd search in TNLF.
+* Without affiliation = Norway, 882 works are found by the MedEd search in TNLF.
+
+See also https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4816483/
+and https://dl.acm.org/doi/abs/10.1007/s11192-018-2714-x
+
+### Central Medical Education journals
 The coverage comment below is from Maggio, L.A., Costello, J.A., Norton, C. et al. Knowledge syntheses in medical education: A bibliometric analysis. Perspect Med Educ 10, 79–87 (2021). https://doi.org/10.1007/s40037-020-00626-9
 > "While all of these journals are indexed in PubMed, seven of them are not included in their entirety, namely: 
 > Advances in Health Sciences Education, Canadian Medical Education Journal, Clinical Teacher, Medical Education Online, Medical Teacher, Teaching and Learning in Medicine, and The Journal of Continuing Education in the Health Professions. For example, Clinical Teacher first appeared in PubMed in 2010, but the journal started publishing articles in 2003.".
