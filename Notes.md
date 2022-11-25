@@ -10,11 +10,11 @@ I then ran "Find reference updates" on the final set, to find PubMed IDs for any
 
 ## Import/Export to Rayyan
 We can retain the WOSID/PMID throughout the screening process by 
-1. Importing to EndNote - PMID and WOSID both end up correctly in the Accession number field. In Zotero they end up in different fields.
+1. Importing to EndNote - PMID and WOSID both end up correctly in the Accession number field. In Zotero they end up in different fields. Therefore I used EndNote.
 2. Deduplicating
-3. Copying Accession number field contents over to the URL field, as well as PMCID. Could theoretically do this with the doi too.
+3. Copying Accession number field contents over to the URL field, and the doi, separated by a ";".
 4. Import into Rayyan via RefMan (Export, txt, Refman output style)
-5. Export from Rayyan using EndNote again. DOI is lost, but the URL field is retained.  
+5. Export from Rayyan (csv/EndNote). DOI is lost in some formats, but the URL field is retained. Thus by copying accession number and doi into the URL field, after export from Rayyan we can take and split this field in Excel, and used the accession numbers to find the publications again in databases (and then re-download for analysis with full metadata). 
 
 ## Example articles to test search against
 Should be found
