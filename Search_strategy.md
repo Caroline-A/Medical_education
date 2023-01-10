@@ -24,7 +24,7 @@ We do not only rely on journal search as most medical education research is not 
 
 ## 2. Searches in Web of Science
 
-Preliminary test searches done March 2022. Final searches done 04.05.2022. 
+Preliminary test searches done March 2022. Main search done 04.05.2022. An update search was done 10.01.2023 to get publications from 2022 (by filtering for publication year = 2022, gave 79 results). The number of results below are from the main search. 
 * Platform: Web of Science
 * Databases: Web of Science Core Collection (SCIE 1945-present, SSCI 1956-present, AHCI 1975-present, ESCI 2017-present).
 * Filters for the final results:
@@ -96,9 +96,9 @@ Search URL: https://www.webofscience.com/wos/woscc/summary/32d54937-9f7c-4704-b3
 
 ## 3. Searches in PubMed
 
-### Searches in PubMed March-May 2022
+### Searches in PubMed, all search
 
-Preliminary test searches done March 2022. Final searches done 04.05.2022. 
+Preliminary test searches done March 2022. Main search done 04.05.2022. An update search was done 10.01.2023 to get publications from 2022 (using 2022/01/01:2022/12/31[Date - Publication] = 77 results). The number of results below are from the main search. 
 * Platform: PubMed advanced search interface (https://pubmed.ncbi.nlm.nih.gov/advanced/). Combinations of different search lines were done using the "Actions" function. 
 * Databases: PubMed
 * Filters for the final results: None
@@ -218,8 +218,9 @@ Clinical and generic education terms are combined with medical/doctor terms to a
 ("Norway"[Affiliation] AND ("education, medical"[MeSH Terms] OR (("Education"[MeSH Terms] OR "models, educational"[MeSH Terms] OR "Program Development"[MeSH Terms]) AND ("students, medical"[MeSH Terms] OR "students, premedical"[MeSH Terms] OR "faculty, medical"[MeSH Terms])))) OR ("Norway"[Affiliation] AND ((("medicine"[Title/Abstract] OR "medical"[Title/Abstract] OR "medic"[Title/Abstract] OR "medics"[Title/Abstract] OR "doctor"[Title/Abstract] OR "doctors"[Title/Abstract] OR "physician*"[Title/Abstract] OR "surgeon*"[Title/Abstract] OR "surgery"[Title/Abstract] OR "psychiatry"[Title/Abstract] OR "psychiatrist*"[Title/Abstract]) AND ("clinical educat*"[Title/Abstract] OR "clinical teach*"[Title/Abstract] OR "clinical rotation*"[Title/Abstract] OR "clinical placement*"[Title/Abstract] OR "teaching simulation*"[Title/Abstract] OR "simulation training"[Title/Abstract] OR "teaching practic*"[Title/Abstract] OR "teaching method*"[Title/Abstract] OR "teaching and learning"[Title/Abstract] OR "problem based learning"[Title/Abstract] OR "work based learning"[Title/Abstract] OR "curricul*"[Title/Abstract] OR "educational supervis*"[Title/Abstract] OR "postgraduate supervis*"[Title/Abstract] OR "clinical supervis*"[Title/Abstract] OR "undergraduate student*"[Title/Abstract] OR "undergraduate train*"[Title/Abstract] OR "postgraduate student*"[Title/Abstract] OR "postgraduate train*"[Title/Abstract] OR "postgraduate speciali*"[Title/Abstract] OR "graduate student*"[Title/Abstract] OR "graduate train*"[Title/Abstract] OR "graduate speciali*"[Title/Abstract] OR "continuing education"[Title/Abstract] OR "on the job training"[Title/Abstract])) OR ("medical educat*"[Title/Abstract] OR "medical teach*"[Title/Abstract] OR "medicine training"[Title/Abstract] OR "surgical educat*"[Title/Abstract] OR "surgery educat*"[Title/Abstract] OR "surgical train*"[Title/Abstract] OR "surgery train*"[Title/Abstract] OR "medical degree*"[Title/Abstract] OR "medicine degree*"[Title/Abstract] OR "medical diploma*"[Title/Abstract] OR "medical school*"[Title/Abstract] OR "medical student*"[Title/Abstract] OR "medicine student*"[Title/Abstract] OR "undergraduate medic*"[Title/Abstract] OR "postgraduate medic*"[Title/Abstract] OR "post graduate medic*"[Title/Abstract] OR "medical clerkship*"[Title/Abstract] OR "clinical clerkship*"[Title/Abstract] OR "medical rotation*"[Title/Abstract] OR "medical placement*"[Title/Abstract] OR "registrar*"[Title/Abstract] OR "medical intern*"[Title/Abstract] OR "resident physician*"[Title/Abstract] OR "medical residen*"[Title/Abstract] OR "junior doctor*"[Title/Abstract] OR "foundation doctor*"[Title/Abstract] OR "trainee doctor*"[Title/Abstract]))) 
 ```
 
-### Searches in PubMed Nov 2022
-An additional search was run on 09.11.2022 after discovering that affiliation data in PubMed is poor for Tidsskrift for den Norske Legeforening (TNLF). This is a potentially important journal for this question, but many publications were missed by the intitial searches (May 2022) because of missing affiliation data from this publisher in PubMed. Web of Science is not a suitable alternative source due to low numbers of publications indexed there from this journal (see "notes.md").
+### Searches in PubMed for TNLF
+
+An additional search was run on 09.11.2022 after discovering that affiliation data in PubMed is poor for Tidsskrift for den Norske Legeforening (TNLF). This is a potentially important journal for this question, but many publications were missed by the intitial searches (May 2022) because of missing affiliation data from this publisher in PubMed. Web of Science is not a suitable alternative source due to low numbers of publications indexed there from this journal (see "notes.md"). Like for the other PubMed search, a update search was done 10.01.2023 to get all publications from 2022 (= 6 results).
 
 As we can assume most of the content in this journal comes from Norwegian institutions, we decided it was important to include this content via a new search strategy which does not use country-level affiliation. We limited this search to publications from 1990 onwards. We also limited this search by excluding certain publication types - the study aims to only include scientific studies (termed "original articles" and "review articles" in TNLF), but we did not consider a positive filter to be reliable enough. Therefore we excluded publication types where we could be almost certain that they would not be relevant (letters, book reviews, etc. - see the types in the search string below).
 
@@ -240,7 +241,7 @@ NOT ("autobiography"[Publication Type] OR "bibliography"[Publication Type] OR "b
 
 ## 4. Searches in ProQuest Education
 
-Preliminary test searches done April 2022. Final searches done 04.05.2022. 
+Preliminary test searches done April 2022. Main search done 04.05.2022. An update search was done 10.01.2023 to get publications from 2022 (by filtering for publication year = 2022, 14 results). The number of results below are from the main search. 
 * Platform: ProQuest, Advanced Search
 * Databases: ProQuest Education Database (1988-present).
 
