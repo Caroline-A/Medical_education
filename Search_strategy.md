@@ -22,6 +22,8 @@ Searches are run either on publication level data (e.g. title, abstract or keywo
 
 We do not only rely on journal search as most medical education research is not published in medical education journals (Kyungjoon Lee, Julia S. Whelan, Nancy H. Tannery, Steven L. Kanter & Antoinette S. Peters (2013) 50 years of publication in the field of medical education, Medical Teacher, 35:7, 591-598, https://doi.org/10.3109/0142159X.2013.786168). 
 
+Searches were run in English in the international databases (Web of Science, PubMed and ProQuest Education), and English and Norwegian in CRISTIN.
+
 ## 2. Searches in Web of Science
 
 Preliminary test searches done March 2022. Main search done 04.05.2022. An update search was done 10.01.2023 to get publications from 2022 (by filtering for publication year = 2022, gave 79 results). The number of results below are from the main search. 
@@ -96,7 +98,7 @@ Search URL: https://www.webofscience.com/wos/woscc/summary/32d54937-9f7c-4704-b3
 
 ## 3. Searches in PubMed
 
-### Searches in PubMed, all search
+### Searches in PubMed, whole database
 
 Preliminary test searches done March 2022. Main search done 04.05.2022. An update search was done 10.01.2023 to get publications from 2022 (using 2022/01/01:2022/12/31[Date - Publication] = 77 results). The number of results below are from the main search. 
 * Platform: PubMed advanced search interface (https://pubmed.ncbi.nlm.nih.gov/advanced/). Combinations of different search lines were done using the "Actions" function. 
@@ -106,8 +108,6 @@ Preliminary test searches done March 2022. Main search done 04.05.2022. An updat
 The strategy consists of two parts: 
 * A MeSH search for terms specific to medical education and medical groups in training, and a MeSH search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
 * A title-abstract search for terms specific to medical education and medical groups in training, and a title-abstract search that combines generic terms for education and training with terms for medicine, doctors and specialities. 
-
-A journal search was not run in PubMed as in this database we have MeSH terms to build a thorough search. 
 
 #### MeSH search
 
@@ -220,7 +220,7 @@ Clinical and generic education terms are combined with medical/doctor terms to a
 
 ### Searches in PubMed for TNLF
 
-An additional search was run on 09.11.2022 after discovering that affiliation data in PubMed is poor for Tidsskrift for den Norske Legeforening (TNLF). This is a potentially important journal for this question, but many publications were missed by the intitial searches (May 2022) because of missing affiliation data from this publisher in PubMed. Web of Science is not a suitable alternative source due to low numbers of publications indexed there from this journal (see "notes.md"). Like for the other PubMed search, a update search was done 10.01.2023 to get all publications from 2022 (= 6 results).
+An additional search was run on 09.11.2022 after discovering that affiliation data in PubMed is poor for Tidsskrift for den Norske Legeforening (TNLF). This is a potentially important journal for this question, but many publications were missed by the intitial searches (May 2022) because of missing affiliation data from this publisher in PubMed. Web of Science is not a suitable alternative source as it has relatively few publications indexed from this journal. Like for the other PubMed search, an update search was done 10.01.2023 to get all publications from 2022 (= 6 results).
 
 As we can assume most of the content in this journal comes from Norwegian institutions, we decided it was important to include this content via a new search strategy which does not use country-level affiliation. We limited this search to publications from 1990 onwards. We also limited this search by excluding certain publication types - the study aims to only include scientific studies (termed "original articles" and "review articles" in TNLF), but we did not consider a positive filter to be reliable enough. Therefore we excluded publication types where we could be almost certain that they would not be relevant (letters, book reviews, etc. - see the types in the search string below).
 
@@ -357,7 +357,7 @@ END
 ### Title search
 In English, we have searched for terms in the title using the same two part approach as Web of Science and PubMed.
 
-In Norwegian we can take a slighty broader approach as there is less research. We take the same two part approach as before, but also include generic education terms in titles in publications in journals classified as in the medical field by the Norwegian Publishing Indicator (NPI subject fields https://npi.hkdir.no/fagfeltoversikt). This approach is not used in English as it is too broad - terms such as "assessment" are so generic (e.g. there are lots of irrelevant results about medical assessments when searching for "assessment" in a oncology journal). 
+In Norwegian we can take a slighty broader approach as there is a lower volumne of publications. We take the same two part approach as before, but also include generic education terms in titles in publications in journals classified as in the medical field by the Norwegian Publishing Indicator (NPI subject fields https://npi.hkdir.no/fagfeltoversikt). This approach is not used in English as it is too broad - terms such as "assessment" are too generic (e.g. there are lots of irrelevant results about medical assessments when searching for "assessment" in a oncology journal). 
 
 #### Title search, English = 328
 
