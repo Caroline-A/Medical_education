@@ -1,6 +1,10 @@
-# Searches_MedEd
+# Search strategy and analysis - Medical Education
 
+This repository contains a literature search strategy used for finding scientific publications about Medical Education research in Norway. The search strategy is provided in markdown format in the file "Search_strategy.md".
 
+Contributors: 
+- Caroline Armitage (Senior Research Librarian, University of Bergen)
+- Monika Kvernenes (Associate Professor, University of Bergen)
 
 
 
