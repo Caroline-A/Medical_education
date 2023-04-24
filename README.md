@@ -1,6 +1,6 @@
 # Search strategy and analysis - Medical Education
 
-This repository contains a literature search strategy used for finding scientific publications about Medical Education research in Norway. The search strategy is provided in markdown format in the file "Search_strategy.md".
+This repository contains a literature search strategy used for finding scientific publications about Medical Education research in Norway. The search strategy is provided in markdown format in the file "Search_strategy.md". It also contains code for the part of the bibliometric analysis carried out in R (file "Analysis_Rmarkdown.Rmd). 
 
 Contributors: 
 - Caroline Armitage (Senior Research Librarian, University of Bergen)
