@@ -1,0 +1,697 @@
+---
+title: "Medical Education - bibliometric analysis"
+author: "Caroline S. Armitage"
+date: "04/28/2023"
+output: html_document
+---
+
+## Information
+
+This Rmarkdown file contains the code used for the parts of the bibliometric analysis done in R for the publication  "Medisinsk utdanningsforskning i Norge de siste 50 årene– en bibliometristudie" (preliminary title) (Kvernenes, Armitage, Almeland & Birkeli). It is available on GitHub:  https://github.com/Caroline-A/Medical_education
+
+It uses R package Bibliometrix (among others). Data is imported from files created via export of publication metadata from Web of Science (Clarivate) and PubMed. 
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<style type="text/css">
+.main-container {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+
+```{r librariessetup, include=FALSE}
+library(bibliometrix)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(knitr)
+library(RColorBrewer)
+library(ggtext)
+```
+
+## Data import
+
+429 publications were included after screening. 19 of these were not found in PubMed or WoS (Web of Science) - these were found by the CRISTIN or ProQuest search, or by the hand journal search in UNIPED (10 results). These are not included in this analysis as we do not have bibliometric data in the right format. 
+
+Data from WoS and PubMed for the 410 publications were downloaded ("plaintext" full record and cited references from WoS, "PubMed export file" from PubMed). This is done by taking the screened results from Rayyan, and searching using the WOS ID/PubMed ID. We end up with 3 files:
+
+* WoS_export_2023-02.txt = The results that are found in Web of Science (257)
+
+* PubMed_export_nonwos_2023-02.txt = The results that are only in PubMed (not found in WoS; 153)
+
+* PubMed_export_all_2023_02.txt = All results that can be found in in PubMed (393)
+
+These are imported, converted to dataframes and merged with bibliometrix. Author keywords from both sets are copied into column OT so that they are retained after merging. 
+
+
+```{r import, include=FALSE}
+pubmedfilepart <- "\\\\helix.klient.uib.no\\biohome\\car049\\LIBRARY\\Bibliometri\\Henvendelser\\MED\\Medical Education\\Analysis_data\\PubMed_export_nonwos_2023-02.txt"
+wosfile <- "\\\\helix.klient.uib.no\\biohome\\car049\\LIBRARY\\Bibliometri\\Henvendelser\\MED\\Medical Education\\Analysis_data\\WoS_export_2023-02.txt"
+pubmedfileall <- "\\\\helix.klient.uib.no\\biohome\\car049\\LIBRARY\\Bibliometri\\Henvendelser\\MED\\Medical Education\\Analysis_data\\PubMed_export_all_2023-02.txt"
+
+wos_df <- convert2df(wosfile, dbsource = "wos", format = "plaintext") 
+#ID is database keywords, DE is author keywords. Not all have these (checked against WOS web interface). 
+#No OT column.
+pmpartnonwos_df <- convert2df(pubmedfilepart, dbsource = "pubmed", format = "pubmed")
+pm_df <- convert2df(pubmedfileall, dbsource = "pubmed", format = "pubmed")
+#ID and DE seem to be that same here - MeSH terms (a few missing). Author keywords are in OT (ca. 50 % missing).
+
+#Create OT col in WoS file, so that all author keywords are in one column (whether pubmed or wos)
+#ID will already be WoS keywords/MeSH
+wos_df["OT"] <- wos_df["DE"]
+
+merge_df <- mergeDbSources(pmpartnonwos_df, wos_df, remove.duplicated=TRUE)
+#OT retained
+```
+
+I also create a version of the merged data without citations, since these are missing from the PubMed files.
+
+```{r nocitversion, include=FALSE}
+#Create a version without citations
+merge_df_nocit <- merge_df
+merge_df_nocit["TC"] <- NA
+```
+
+One of the results had a publication date as 2023 (probably an updating of metadata since the search), so was removed from the analysis.
+
+```{r remove2023, include=FALSE}
+merge_df<-merge_df[merge_df$PY != 2023, ] 
+pm_df<-pm_df[pm_df$PY != 2023, ] 
+pmpartnonwos_df<-pmpartnonwos_df[pmpartnonwos_df$PY != 2023, ]
+merge_df_nocit<-merge_df_nocit[merge_df_nocit$PY != 2023, ]
+```
+
+This leaves 428 publications in total in the study, and `r nrow(merge_df)` in the largest set of bibliometric data. 
+
+* Number of items in the WOS data = `r nrow(wos_df)`
+* Number of items in the PubMed (minus WoS covered works) data = `r nrow(pmpartnonwos_df)`
+* Number of items in the merged WoS and PubMed data = `r nrow(merge_df)`
+* Number of items in the only PubMed data set = `r nrow(pm_df)`
+
+## Data weaknesses
+
+PubMed is a relatively weak source for affiliation-based data. From 1988-2013, they indexed only the first author's affiliation information (with it appearing exactly as it does in the publication from 2003-). It was only from 2014 that affiliation data for all authors was included, and from late 2014 that multi-affiliated author affiliations were included. At this point, quality-control of this data ceased (https://www.nlm.nih.gov/bsd/mms/medlineelements.html#ad). Thus:
+
+* Some search results may have been lost before 2014 if the publication was not covered by Web of Science AND a co-author (but not first author) was affiliated in Norway.
+* Some search results may be missing if affiliation data is missing (e.g. a number of articles from Tidsskrift for den Norske Legeforening have have no affiliation data in PubMed - for this particular analysis and this journal, this is not an issue as we did a search specifically within this journal without any affiliation limitations).
+
+For institutional affiliations it is best to use Web of Science data. 
+
+## Data cleaning
+
+Author names - Ø, Å, Æ and Ü are replaced with O, A, A and U, and I check all authors with 3 or more publications to see if any other erroneous author splits have happened. 
+
+```{r datacleaningauthors, attr.output='style="max-height: 200px;"', echo=FALSE}
+#Replace norwegian characters
+merge_df$AU<-gsub('Ø', 'O', merge_df$AU)
+merge_df$AU<-gsub('Å', 'A', merge_df$AU)
+merge_df$AU<-gsub('Æ', 'A', merge_df$AU)
+merge_df$AU<-gsub('Ü', 'U', merge_df$AU)
+merge_df$AU<-gsub('Ó', 'O', merge_df$AU)
+merge_df$AU<-gsub('Ä', 'A', merge_df$AU)
+merge_df$AU<-gsub('Á', 'A', merge_df$AU)
+
+pm_df$AU<-gsub('Ø', 'O', pm_df$AU)
+pm_df$AU<-gsub('Å', 'A', pm_df$AU)
+pm_df$AU<-gsub('Æ', 'A', pm_df$AU)
+pm_df$AU<-gsub('Ü', 'U', pm_df$AU)
+pm_df$AU<-gsub('Ó', 'O', pm_df$AU)
+pm_df$AU<-gsub('Ä', 'A', pm_df$AU)
+pm_df$AU<-gsub('Á', 'A', pm_df$AU)
+
+#Check how author names look now, do any with over 2 pubs look like duplicates?
+mergeanalysis<-(biblioAnalysis(merge_df, sep = ";"))
+authorlist <- as.data.frame(mergeanalysis$Authors)
+authorlist$AU <- as.character(authorlist$AU)
+
+arrlistauthors<-arrange(authorlist,AU,Freq)
+kable(arrange(arrlistauthors %>% filter(Freq > 1),AU,Freq))
+```
+
+In the next step I do the same for journal names, it seems like there are several name variants which have to be manually merged/fixed. Note that these are cleaned of commas by bibliomanalysis compared to the original dataframe, so for replacing take the name from the original dataframe.
+
+```{r datacleaningjournals, attr.output='style="max-height: 200px;"', echo=FALSE}
+#Check sources
+sourcelist <- as.data.frame(mergeanalysis$Sources)
+sourcelist$SO <- as.character(sourcelist$SO)
+arrlist<-arrange(sourcelist,SO,Freq)
+kable(arrlist)
+
+merge_df$SO<-gsub('JOURNAL OF EMPIRICAL RESEARCH ON HUMAN RESEARCH ETHICS : JERHRE', 'JOURNAL OF EMPIRICAL RESEARCH ON HUMAN RESEARCH ETHICS', merge_df$SO)
+merge_df$SO<-gsub('MINIMALLY INVASIVE THERAPY & ALLIED TECHNOLOGIES : MITAT : OFFICIAL JOURNAL OF THE SOCIETY FOR MINIMALLY INVASIVE THERAPY', 'MINIMALLY INVASIVE THERAPY & ALLIED TECHNOLOGIES', merge_df$SO)
+merge_df$SO<-gsub('NUKLEARMEDIZIN-NUCLEAR MEDICINE', 'NUKLEARMEDIZIN. NUCLEAR MEDICINE', merge_df$SO)
+merge_df$SO<-gsub('SOCIAL SCIENCE & MEDICINE (1982)', 'SOCIAL SCIENCE & MEDICINE', merge_df$SO, fixed=TRUE)
+merge_df$SO<-gsub('SURGICAL ENDOSCOPY AND OTHER INTERVENTIONAL TECHNIQUES', 'SURGICAL ENDOSCOPY', merge_df$SO)
+merge_df$SO<-gsub('TIDSSKRIFT FOR DEN NORSKE LAEGEFORENING.*', 'TIDSSKRIFT FOR DEN NORSKE LEGEFORENING', merge_df$SO)
+merge_df$SO<-gsub('EDUCATION FOR HEALTH (ABINGDON, ENGLAND)', 'EDUCATION FOR HEALTH', merge_df$SO, fixed=TRUE)
+merge_df$SO<-gsub('SIMULATION IN HEALTHCARE-JOURNAL OF THE SOCIETY FOR SIMULATION IN HEALTHCARE', 'SIMULATION IN HEALTHCARE', merge_df$SO)
+merge_df$SO<-gsub('HEALTHCARE (BASEL, SWITZERLAND)', 'HEALTHCARE', merge_df$SO, fixed=TRUE)
+```
+Original number of journals = `r nrow(arrlist)`
+
+```{r include=FALSE}
+mergeanalysis<-(biblioAnalysis(merge_df, sep = ";"))
+sourcelist <- as.data.frame(mergeanalysis$Sources)
+sourcelist$SO <- as.character(sourcelist$SO)
+arrlist<-arrange(sourcelist,SO,Freq)
+```
+
+New number of journals = `r nrow(arrlist)`
+
+
+## Publications per year
+
+What are the publishing trends over time?
+
+```{r summarystats, include=FALSE}
+mergeanalysis<-(biblioAnalysis(merge_df, sep = ";"))
+summarystats<-summary(mergeanalysis) #generate summary stats
+```
+
+```{r timespangrowth, echo=FALSE}
+#Create a table of publications per year
+kable(summarystats$MainInformation[c(2,5)])
+kable(summarystats$AnnualProduction)
+```
+
+```{r pubsperyearplotprep, include=FALSE}
+#Create a dataframe for plotting this publications per year
+pubsperyear<-as.data.frame(summarystats$AnnualProduction) #pubs per year section
+pubsperyear$Year <- as.numeric(as.character(pubsperyear$Year)) #convert year
+str(pubsperyear)
+```
+
+
+```{r pubsperyearplot, fig.height = 5, fig.width = 6, fig.align = "center", fig.cap="Number of publications per year", echo=FALSE}
+#Create own plot in ggplot2
+pubsperyearplot<-ggplot(data=pubsperyear, aes(y=Articles,x=Year)) + 
+  geom_line(size=1) +
+  xlab("") +
+  ylab("Number of publications") +
+  theme_classic() +
+  theme(axis.text = element_text(size = 14)) +
+  theme(axis.title = element_text(size = 14))  
+pubsperyearplot
+```
+
+
+
+
+## Most common journals
+
+What are the most often-used journals? Note that UNIPED has 10 results, that are not currently included in this analysis due to not being covered by PubMed/WoS. You could also argue that since UNIPED and TNLF were searched in specifically, they could be over-represented.
+
+```{r commonjournals, echo=FALSE}
+kable(summarystats$MostRelSources, caption="The ten journals with most publications")
+```
+
+How many are in the top 24 proposed by Maggio?
+
+```{r maggiojournals, include=FALSE}
+#To get all (more than 10)
+mergeanalysis<-(biblioAnalysis(merge_df, sep=";"))
+sourcestablemerge <- as.data.frame((mergeanalysis$Sources))
+
+#Add a column for percentage of total
+sourcestablemerge<-sourcestablemerge %>% mutate(Percentage = (Freq/sum(Freq))*100)
+sourcestablemerge<- sourcestablemerge %>% mutate_at(vars(Percentage), round, 1)
+
+#Filter the Maggio journals
+maggiolist<-c("academic medicine", 
+              "medical education and practice", 
+              "anatomical sciences education",
+              "bmc medical education",
+              "gms journal for medical education", 
+              "international journal of medical education",
+              "journal of educational evaluation for health professions",
+              "journal of graduate medical education",
+              "journal of surgical education",
+              "^medical education",
+              "perspectives on medical education",
+              "SIMULATION IN HEALTHCARE-JOURNAL OF THE SOCIETY FOR SIMULATION IN HEALTHCARE",
+              "JOURNAL OF MEDICAL EDUCATION AND CURRICULAR DEVELOPMENT",
+              "canadian medical education journal",
+              "advances in health sciences education",
+              "clinical teacher",
+              "education for health",
+              "teaching and learning in medicine",
+              "journal of continuing education in the health professions",
+              "medical education online",
+              "medical teacher",
+              "african journal of health professions education",
+              "bmj simulation & technology enhanced learning",
+              "focus on health professional education"
+              )
+maggiolist2<-c("ACADEMIC MEDICINE", 
+              "ADVANCES IN MEDICAL EDUCATION AND PRACTICE", 
+              "ANATOMICAL SCIENCES EDUCATION",
+              "BMC MEDICAL EDUCATION",
+              "GMS JOURNAL FOR MEDICAL EDUCATION", 
+              "INTERNATIONAL JOURNAL OF MEDICAL EDUCATION",
+              "JOURNAL OF EDUCATIONAL EVALUATION FOR HEALTH PROFESSIONS",
+              "JOURNAL OF GRADUATE MEDICAL EDUCATION",
+              "JOURNAL OF SURGICAL EDUCATION",
+              "MEDICAL EDUCATION",
+              "PERSPECTIVES ON MEDICAL EDUCATION",
+              "SIMULATION IN HEALTHCARE-JOURNAL OF THE SOCIETY FOR SIMULATION IN HEALTHCARE",
+              "JOURNAL OF MEDICAL EDUCATION AND CURRICULAR DEVELOPMENT",
+              "CANADIAN MEDICAL EDUCATION JOURNAL",
+              "ADVANCES IN HEALTH SCIENCES EDUCATION",
+              "CLINICAL TEACHER",
+              "EDUCATION FOR HEALTH",
+              "TEACHING AND LEARNING IN MEDICINE",
+              "JOURNAL OF CONTINUING EDUCATION IN THE HEALTH PROFESSIONS",
+              "MEDICAL EDUCATION ONLINE",
+              "MEDICAL TEACHER",
+              "AFRICAN JOURNAL OF HEALTH PROFESSIONS EDUCATION",
+              "BMJ SIMULATION & TECHNOLOGY ENHANCED LEARNING",
+              "FOCUS ON HEALTH PROFESSIONAL EDUCATION"
+              )
+#The second method was used because the previous method was searching for "medical education" within other titles.
+
+#Create a table of articles per journal and percentage
+maggiolist_tab<-dplyr::filter(sourcestablemerge[sourcestablemerge$SO %in% maggiolist2,])
+#maggiolist_tab<-dplyr::filter(sourcestablemerge, grepl(paste(maggiolist, collapse = "|"), SO, ignore.case=TRUE))
+```
+
+
+```{r maggiotable, echo=FALSE}
+#Table
+maggiotable <- maggiolist_tab %>%
+  bind_rows(summarise(., across(where(is.numeric), sum), across(where(is.factor), ~"Total")))
+
+kable(maggiotable, caption="Publications found in Maggio et al.'s 24 central medical education journals")
+```
+
+```{r maggiojournalsplot, fig.height = 5, fig.width = 10, fig.align = "center", fig.cap="Percentage of publications in Maggio et al.'s central medical education journals", echo=FALSE}
+
+#Bar chart
+maggiojournalsplot<-ggplot(data=maggiolist_tab, aes(x=SO, y=Percentage)) + 
+  geom_col() +
+  xlab("") +
+  ylab("Percentage of publications") +
+  theme_classic() +
+  theme(axis.text.x=element_text(angle=60,hjust=1))+
+  scale_x_discrete(label=function(x) stringr::str_trunc(x, 25))
+maggiojournalsplot
+```
+
+```{r maggiojournalspie, fig.height = 5, fig.width = 10, fig.align = "center", fig.cap="Percentage of publications in Maggio et al.'s central medical education journals", echo=FALSE}
+
+#Add row with "other" journals
+maggiolist_tab_other<-maggiolist_tab %>% add_row(SO = "Not in Maggio et al. list", Percentage = (100-sum(maggiolist_tab$Percentage)))
+#Sort
+maggiolist_tab_other$SO <-  factor(maggiolist_tab_other$SO, levels=maggiolist_tab_other$SO)
+maggiolist_tab_other = maggiolist_tab_other[order(maggiolist_tab_other$Percentage, decreasing = FALSE), ]
+maggiolist_tab_other <-  maggiolist_tab_other  %>% slice(16, 1:15)
+
+#Pie chart
+colourcount = 16
+mycols = colorRampPalette(bias=1.5, brewer.pal(n=10, name="Spectral"))(colourcount)
+mycols=append("#CDCDCD", mycols)
+
+maggiojournalspie<-ggplot(data=maggiolist_tab_other, aes(x="", fill=fct_inorder(SO), y=Percentage)) + 
+  geom_bar(width = 1, stat = "identity", colour="grey50") +
+  coord_polar("y", start=0) +
+  scale_fill_manual(values=mycols, guide = guide_legend(reverse = TRUE), name="Journal") +
+  theme_minimal()
+maggiojournalspie
+```
+
+
+
+
+## Institutions
+
+Selected quotes from the documentation of Bibliometrix (https://cran.r-project.org/web/packages/bibliometrix/bibliometrix.pdf):
+
+"The function biblioAnalysis returns an object of class “bibliometrix”. An object of class “bibliometrix” is a list containing the following components:
+* CO - the affiliation country of the corresponding author
+* Countries -  the affiliation countries’ frequency distribution
+* FirstAffiliation - the affiliation of the first author
+* Affiliations - the frequency distribution of affiliations (of all co-authors for each paper)"
+
+### What are the institutions (/sectors) that have published most?
+
+Here we also have to do some cleaning - it seems even the WOS data here under affiliations is not clean, with multiple names for the same institutions. May be because Bibliometrix extracts it directly from the raw affiliations rather than organisation-enhanced. We also have affiliation data from PubMed which is more messy.
+
+I have cleaned those mentioning Norwegian terms and places.
+
+```{r exploreaffiliations, include=FALSE}
+#Can trim white spaces, but doesn't help if affiliation with extra space is sandwiched between others
+#Can also trim full stops at the end of strings, which appear in some affiliations
+merge_df$AU_UN<-trimws(merge_df$AU_UN, which = c("both"))
+pm_df$AU_UN<-trimws(pm_df$AU_UN, which = c("both"))
+merge_df$AU_UN<-sub("[.]$", "", merge_df$AU_UN)
+pm_df$AU_UN<-sub("[.]$", "", pm_df$AU_UN)
+
+mergeanalysis<-(biblioAnalysis(merge_df, sep=";"))
+affiliationsmerge <- as.data.frame((mergeanalysis$Affiliations))
+
+#wosanalysis<-(biblioAnalysis(wos_df, sep=";"))
+#affiliationswos <- as.data.frame((wosanalysis$Affiliations))
+
+#pmanalysis<-(biblioAnalysis(pm_df, sep=";"))
+#affiliationpm <- as.data.frame((pmanalysis$Affiliations))
+```
+
+```{r exploreaffiliations2, include=TRUE}
+#Make a filter to examine subset of affiliations likely to be in Norway
+filterlists<-c("bergen", "haukeland",
+              "vestland", "hordaland",
+              "oslo", "akershus",
+              "trondheim", "tronder", "trønder",
+              "ntnu", "norges teknisk", "olav",
+              "tromsø", "tromso", "norges arktisk", "nord",
+              "stavanger", "haugesund", "kristiansand",
+              "rogaland", "sør", "innland", "agder", "buskerud", "ostfold", "oestfold", "vestfold", "levanger",
+              "VID", "NORCE", "sintef",
+              "sykehus", "sjukehus", "helse", "regional health", "hospital trust", "fhi",
+              "norway", "norwegian", "norsk", "lefo", "legeforsk"
+              )
+```
+
+```{r exploreaffiliations3, include=TRUE}
+filteredaff<-dplyr::filter(affiliationsmerge, grepl(paste(filterlists, collapse = "|"), AFF, ignore.case=TRUE))
+filteredaff #messy affiliations containing common norwegian places / health trust words
+```
+
+
+Note that when cleaning we cannot use truncation because all of the various affiliations are stored in one column, so truncation will replace any other affiliations after the one truncated too. 
+
+```{r cleanaffiliations, include=FALSE}
+
+merge_df$AU_UN<-gsub('BUSKERUD UNIV COLL', 'UNIV SOUTH EASTERN NORWAY', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('BUSKERUD AND VESTFOLD UNIV COLL', 'UNIV SOUTH EASTERN NORWAY', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV COLL SOUTHEAST NORWAY', 'UNIV SOUTH EASTERN NORWAY', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('ALLMED LEGESENTER NORWEGIAN MED ASSOC', 'NORWEGIAN MED ASSOC', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORWEGIAN CTR HLTH SERV RES', 'NORWEGIAN KNOWLEDGE CTR HLTH SERV', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORWEGIAN KNOWLEDGE CENTRE FOR THE HEALTH SERVICES', 'NORWEGIAN KNOWLEDGE CTR HLTH SERV', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('ALLMED LEGESENTER NORWEGIAN MED ASSOC', 'NORWEGIAN MED ASSOC', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORWEGIAN CTR E HLTH RES', 'NORWEGIAN CENTRE FOR E-HEALTH RESEARCH', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('UNIVERSITY OF BERGEN ', 'UNIV BERGEN', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITY OF BERGEN', 'UNIV BERGEN', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('FORUM FOR YNGRE MEDISINSKE FORSKERE VED UNIVERSITETET I BERGEN', 'UNIV BERGEN', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('MEDISINSKE FAKULTET UNIVERSITETET I BERGEN', 'UNIV BERGEN', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITETET I BERGEN\\.', 'UNIV BERGEN', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITETET I BERGEN', 'UNIV BERGEN', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITET I BERGEN', 'UNIV BERGEN', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('BERGEN UNIV COLL', 'WESTERN NORWAY UNIV APPL SCI', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('BERGEN UNIVERSITY COLLEGE', 'WESTERN NORWAY UNIV APPL SCI', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('WESTERN NORWAY UNIVERSITY OF APPLIED SCIENCE', 'WESTERN NORWAY UNIV APPL SCI', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('WESTERN NORWAY UNIVERSITY OF APPLIED SCIENCES', 'WESTERN NORWAY UNIV APPL SCI', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('WESTERN NORWAY UNIV APPL SCIS', 'WESTERN NORWAY UNIV APPL SCI', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('HAUKELAND UNIVERSITY HOSPITAL', 'HAUKELAND HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('HAUKELAND UNIV HOSP', 'HAUKELAND HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('HAUKELAND UNIV SJUKEHUS', 'HAUKELAND HOSP', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('UNIVERSITY STAVANGER', 'UNIV STAVANGER', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('OSLO METROPOLITAN UNIV ', 'OSLO METROPOLITAN UNIV', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLOMET STORBYUNIV', 'OSLO METROPOLITAN UNIV', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIV COLL', 'OSLO METROPOLITAN UNIV', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIVERSITY COLLEGE', 'OSLO METROPOLITAN UNIV', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO AND AKERSHUS UNIVERSITY COLLEGE OF APPLIED SCIENCES ', 'OSLO METROPOLITAN UNIV', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO AND AKERSHUS UNIVERSITY COLLEGE OF APPLIED SCIENCES', 'OSLO METROPOLITAN UNIV', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('AKERSHUS UNIV HOSP ', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('AKERSHUS UNIV HOSP', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('AKERSHUS UNIVERSITY HOSPITAL ', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('AKERSHUS UNIVERSITY HOSPITAL', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('AVDELING FOR GASTRO- OG BARNEKIRURGI OSLO UNIVERSITETSSYKEHUS', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIV HOSP AHUS ', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIV HOSP AHUS', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIV HOSPITAL ', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIV HOSPITAL', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('AVDELING FOR TRAUMATOLOGI OSLO UNIVERSITETSSYKEHUS', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('AVDELING FOR GASTRO- OG BARNEKIRURGI OSLO UNIVERSITETSSYKEHUS', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIVERSITY HOSPITAL ', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIVERSITY HOSPITAL', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIVERSITETSSYKEHUS', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIV SYKEHUS', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIV HOSP ', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OSLO UNIV HOSP', 'OSLO & AKERSHUS UNIV HOSPS', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('VESTFOLD HOSPITAL TRUST', 'VESTFOLD HOSP TRUST', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('LEGEFORENINGENS FORSKNINGSINSTITUTT OG INSTITUTT FOR HELSELEDELSE OG HELSEØKONOMI UNIVERSITETET I OSLO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITY OF MANCHESTER OG SENTER FOR MEDISINSK ETIKK UNIVERSITETET I OSLO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('BLINDERN UNIVERSITETET I OSLO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('DET MEDISINSKE FAKULTET UNIVERSITETET I OSLO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('SENTER FOR MEDISINSK ETIKK UNIV OSLO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV OSLO ', 'UNIV OSLO', merge_df$AU_UN)
+#merge_df$AU_UN<-gsub('UNIVERSITETET I OSLO.', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITETET I OSLO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITET I OSLO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITY OF OSLO ', 'UNIV OSLO', merge_df$AU_UN)
+#merge_df$AU_UN<-gsub('UNIVERSITY OF OSLO.', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITY OF OSLO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV OSLO CEMO', 'UNIV OSLO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV OSLOCEMO', 'UNIV OSLO', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('INSTITUTT FOR FYSIOLOGI OG BIOMEDISINSK TEKNIKK NORGES TEKNISK-NATURVITENSKAPELIGE UNIVERSITET', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('DET MEDISINSKE FAKULTET INSTITUTT FOR SAMFUNNSMEDISINSKE FAG NORGES TEKNISK-NATURVITENSKAPELIGE UNIVERSITET', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORWEGIAN UNIV SCI AND TECHNOL NTNU', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NTNU NORWEGIAN UNIV SCI AND TECHNOL', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NTNU NORWEGIAN UNIVERSITY OF SCIENCE AND TECHNOLOGY', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORWEGIAN UNIVERSITY OF SCIENCE AND TECHNOLOGY (NTNU)', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN, fixed=TRUE)
+merge_df$AU_UN<-gsub('NORWEGIAN UNIVERSITY OF SCIENCE AND TECHNOLOGY', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORWEGIAN UNIV SCI AND TECHNOL (NTNU)', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORGES TEKNISK-NATURVITENSKAPELIGE UNIVERSITET OG ST\\.', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN) #dont move
+merge_df$AU_UN<-gsub('NORGES TEKNISK-NATURVITENSKAPELIGE UNIVERSITET', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV COLL GJOVIK', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('ST OLAVS HOSPITAL','ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('ST OLAVS UNIV HOSP', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OLAV UNIVERSITY HOSPITAL', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('ST OLAV TRONDHEIM UNIV HOSP', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('ST OLAV UNIV HOSP TRONDHEIM', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('ST OLAVS TRONDHEIM UNIV HOSP', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('TRONDHEIM REG AND UNIV HOSP', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('TRONDHEIM UNIVERSITY HOSPITAL', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV TRONDHEIM HOSP', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITETET I TRONDHEIM', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN) #DONT MOVE
+merge_df$AU_UN<-gsub('UNIV TRONDHEIM', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN) #DONT MOVE
+merge_df$AU_UN<-gsub('UNIVERSITY OF TRONDHEIM', 'NORWEGIAN UNIV SCI AND TECHNOL', merge_df$AU_UN) #DONT MOVE
+merge_df$AU_UN<-gsub('UNIV HOSP TRONDHEIM', 'ST OLAVS HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('OLAVS HOSPITAL','ST OLAVS HOSP', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('UIT THE ARCTIC UNIVERSITY OF NORWAY AND DEPARTMENT OF INTERNAL MEDICINE', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('INSTITUTT FOR SAMFUNNSMEDISIN UNIVERSITETET I TROMSØ', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITY OF TROMSØ MEDICAL SCHOOL', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITY OF TROMSØ SCHOOL OF MEDICINE', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITETET I TROMSØ', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITETE I TROMSØ', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UIT UNIV TROMSO', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITY OF TROMSØ', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV TROMSO ARCTIC UNIV NORWAY', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV TROMSO SCHOOL OF MEDICINE', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV TROMSO NORGES ARKTISKE UNIV', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UIT THE ARCTIC UNIVERSITY OF NORWAY', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('THE ARCTIC UNIVERSITY OF NORWAY', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UIT NORGES ARKTISKE UNIV', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UIT ARCTIC UNIV NORWAY', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UIT ARTIC UNIV NORWAY', 'UNIV TROMSO', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('ARCTIC UNIV NORWAY', 'UNIV TROMSO', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('UNIVERSITY HOSPITAL OF NORTHERN NORWAY', 'UNIV HOSP NORTHERN NORWAY', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV HOSP NORTH NORWAY', 'UNIV HOSP NORTHERN NORWAY', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIV HOSP NO NORWAY', 'UNIV HOSP NORTHERN NORWAY', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORDLAND HOSP TRUST', 'NORDLAND HOSP', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('UNIVERSITETSSYKEHUSET NORD-NORGE', 'NORDLAND HOSP', merge_df$AU_UN)
+
+merge_df$AU_UN<-gsub('NORSK INSTITUTT FOR STUDIER AV FORSKNING OG UTDANNING', 'NORDIC INST STUDIES INNOVATION RESEARCH AND EDUCATION', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORD INST STUDIES INNOVAT RES AND EDUC', 'NORDIC INST STUDIES INNOVATION RESEARCH AND EDUCATION', merge_df$AU_UN)
+merge_df$AU_UN<-gsub('NORSK INST STUDIER FORSKNING AND UTDANNING', 'NORDIC INST STUDIES INNOVATION RESEARCH AND EDUCATION', merge_df$AU_UN)
+```
+
+Table over cleaned affiliations mentioning Norwegian places:
+
+```{r cleanedaffiliations, echo=FALSE}
+mergeanalysis<-(biblioAnalysis(merge_df, sep=";"))
+affiliationsmerge <- as.data.frame((mergeanalysis$Affiliations))
+filteredaffcln<-dplyr::filter(affiliationsmerge, grepl(paste(filterlists, collapse = "|"), AFF, ignore.case=TRUE))
+filteredaffcln #check if cleaned ok?
+```
+
+```{r pubsaffiliations, echo=FALSE}
+#Create tables
+afftable<-arrange(affiliationsmerge, AFF,Freq)
+
+#Top 15
+afftabletop10<-afftable[0:15,]
+colnames(afftabletop10)[which(names(afftabletop10) == "AFF")] <- "Affiliation"
+colnames(afftabletop10)[which(names(afftabletop10) == "Freq")] <- "No. publications"
+kable(afftabletop10, caption="Publications per institution, 15 institutions with most publications")
+
+#Those with over 5 publications from Norway
+afftablenor<-dplyr::filter(afftable, grepl(paste(filterlists, collapse = "|"), AFF, ignore.case=TRUE))
+afftablenor15<-arrange(afftablenor %>% filter(Freq > 4),AFF,Freq)
+afftablenor15<-afftablenor15 %>% mutate(Percentage = (Freq/307)*100)
+afftablenor15<- afftablenor15 %>% mutate_at(vars(Percentage), round, 1)
+colnames(afftablenor15)[which(names(afftablenor15) == "AFF")] <- "Affiliation"
+colnames(afftablenor15)[which(names(afftablenor15) == "Freq")] <- "No. publications"
+kable(afftablenor15, caption="Publications per Norwegian institution, institutions with 5 or more publications")
+
+```
+
+```{r affpertime, echo=FALSE}
+#Split the data by publication year
+merge_df197989<-merge_df %>% filter_at("PY", any_vars(.> 1978 & .<1990))
+merge_df199099<-merge_df %>% filter_at("PY", any_vars(.> 1989 & .<2000))
+merge_df200009<-merge_df %>% filter_at("PY", any_vars(.> 1999 & .<2010))
+merge_df201019<-merge_df %>% filter_at("PY", any_vars(.> 2009 & .<2020))
+merge_df202022<-merge_df %>% filter_at("PY", any_vars(.> 2019 & .<2023))
+```
+
+```{r affpertimetab}
+#Make a table over time - here for 2020-2022
+mergeanalysistime<-(biblioAnalysis(merge_df202022, sep=";"))
+affiliationsmergetime <- as.data.frame((mergeanalysistime$Affiliations))
+afftabletime<-arrange(affiliationsmergetime, AFF,Freq)
+#Top 10
+colnames(afftabletime)[which(names(afftabletime) == "AFF")] <- "Affiliation"
+colnames(afftabletime)[which(names(afftabletime) == "Freq")] <- "No. publications"
+kable(afftabletime, caption="Publications per institution, 10 institutions with most publications per time period")
+```
+
+
+```{r pubsaffiliationsplot, fig.height = 5, fig.width = 10, fig.align = "center", fig.cap="Percentage of publications from each Norwegian institution (>=5 publications)", echo=FALSE}
+#Bar chart - remember that we can't use a pie here because the percentages are not cumulative!!
+affsplot<-ggplot(data=afftablenor15, aes(x=Affiliation, y=Percentage)) + 
+  geom_col() +
+  xlab("") +
+  ylab("Percentage of publications") +
+  theme_classic() +
+  theme(axis.text.x=element_text(angle=60,hjust=1))+
+  scale_x_discrete(label=function(x) stringr::str_trunc(x, 30))+
+  theme(axis.text = element_text(size = 12)) +
+  theme(axis.title = element_text(size = 14))  
+affsplot
+```
+
+
+
+
+### Institutional collaboration? 
+
+Done using a network analysis tool, VOS viewer (https://www.vosviewer.com/).
+
+
+
+## Authors
+
+### Who have published the most publications?
+
+```{r topauthors, include=FALSE}
+#How many (and which) authors have 8 or more pubs?
+mergeanalysis<-(biblioAnalysis(merge_df, sep = ";"))
+authorlist <- as.data.frame(mergeanalysis$Authors)
+authorlist$AU <- as.character(authorlist$AU)
+arrlistauthors<-arrange(authorlist,AU,Freq)
+arrange(arrlistauthors %>% filter(Freq > 7),AU,Freq)
+
+#decide no. of authors to show
+res<-authorProdOverTime(merge_df_nocit, k = 17, graph = TRUE)
+```
+Authors with 8 or more publications = `r nrow(arrange(arrlistauthors %>% filter(Freq > 7),AU,Freq))`
+
+```{r pubtimefig, fig.height = 9, fig.width = 8, fig.align = "center", fig.cap="Authors with 5 or more publications, publishing over time", echo=FALSE}
+res$graph$labels$title <- " " #remove title
+res$graph$labels$y <- " " #remove y axis title
+res$graph$labels$x <- " " 
+res$graph$guides$size$title<-"Antall artikler"
+plot(res$graph)
+```
+
+### Author collaboration? 
+
+Done using a network analysis tool, VOS viewer (https://www.vosviewer.com/).
+
+
+
+
+#### Dominance analysis 
+
+Consider the 20 authors with highest "dominance factor". "The Dominance Factor is a ratio of a person's multi-authored articles compared to their first author articles" (Kumar, S., & Kumar, S. (2008). Collaboration in research productivity in oil seed research institutes of India. In Proceedings of Fourth International Conference on Webometrics, Informetrics and Scientometrics.).
+
+```{r authordominance, echo=FALSE}
+#Who has the most first authored articles?
+dom_merge <- dominance(mergeanalysis, k=20)
+kable(dom_merge)
+```
+
+```{r authorsubsets, include=FALSE}
+#Create a subset of the 20 most dominant authors
+dominantauthors<-unlist(dom_merge$Author)
+mergedominantauthors_df<-dplyr::filter(merge_df, grepl(paste(dominantauthors, collapse = "|"),AU))
+
+#Create a subset of the authors with 5 or more publications
+commonauthorstab<-(arrlistauthors %>% filter(Freq > 4))
+commonauthors<-unlist(commonauthorstab$AU)
+mergecommonauthors_df<-dplyr::filter(merge_df, grepl(paste(commonauthors, collapse = "|"),AU))
+```
+
+
+## What are the themes of the research? 
+
+Done manually via categorisation of empirical location, type of methods, and educational level.
+
+### What do we see in the keywords?
+
+This is author keywords in WOS, and MeSH terms from PubMed. 
+
+```{r authorkeywords, include=FALSE}
+CSkeywords<-conceptualStructure(wos_df, field="DE", method="MDS", minDegree=3, clust="auto", stemming=TRUE, labelsize=10, documents=10, graph=FALSE)
+```
+```{r authorkeywordsplot, echo=FALSE}
+CSkeywords$graph_terms
+CSkeywords$graph_dendogram
+```
+
+
+## References & guides
+
+```{r, include=FALSE}
+citation("bibliometrix")
+citation("tidyverse")
+citation("ggplot2")
+citation("dplyr")
+citation("knitr")
+```
+
+https://cran.r-project.org/web/packages/bibliometrix/bibliometrix.pdf
+
+https://www.bibliometrix.org/vignettes/Introduction_to_bibliometrix.html
+
+https://github.com/massimoaria/bibliometrix
+
+Aria, M. & Cuccurullo, C. (2017) bibliometrix: An R-tool for comprehensive science mapping analysis, Journal of Informetrics, 11(4), pp 959-975, Elsevier.
+
+Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+
+Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
+
+Yihui Xie (2021). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package
+  version 1.36.
+  
+Yihui Xie (2015) Dynamic Documents with R and knitr. 2nd edition. Chapman and Hall/CRC. ISBN 978-1498716963
+  
+Yihui Xie (2014) knitr: A Comprehensive Tool for Reproducible Research in R. In Victoria Stodden, Friedrich Leisch and Roger D. Peng, editors, Implementing Reproducible Computational Research.
+  Chapman and Hall/CRC. ISBN 978-1466561595
+  
+JJ Allaire and Yihui Xie and Jonathan McPherson and Javier Luraschi and Kevin Ushey and Aron Atkins and Hadley Wickham and Joe Cheng and Winston Chang and Richard Iannone (2021). rmarkdown: Dynamic Documents for R. R package version 2.11. URL https://rmarkdown.rstudio.com.
+
+Yihui Xie and J.J. Allaire and Garrett Grolemund (2018). R Markdown: The Definitive Guide. Chapman and Hall/CRC. ISBN 9781138359338. URL https://bookdown.org/yihui/rmarkdown.
+
+Yihui Xie and Christophe Dervieux and Emily Riederer (2020). R Markdown Cookbook. Chapman and Hall/CRC. ISBN 9780367563837. URL https://bookdown.org/yihui/rmarkdown-cookbook.
+
