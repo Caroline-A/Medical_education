@@ -1,7 +1,7 @@
 ---
 title: "Medical Education - bibliometric analysis"
 author: "Caroline S. Armitage"
-date: "04/28/2023"
+date: "26/05/2023"
 output: html_document
 ---
 
@@ -38,7 +38,7 @@ library(ggtext)
 
 ## Data import
 
-429 publications were included after screening. 19 of these were not found in PubMed or WoS (Web of Science) - these were found by the CRISTIN or ProQuest search, or by the hand journal search in UNIPED (10 results). These are not included in this analysis as we do not have bibliometric data in the right format. 
+429 publications were originally included after screening. 19 of these were not found in PubMed or WoS (Web of Science) - for example these were found by the CRISTIN or ProQuest search, or by the hand journal search in UNIPED (10 results). These are not included in this R analysis as we do not have bibliometric data in the right format. 
 
 Data from WoS and PubMed for the 410 publications were downloaded ("plaintext" full record and cited references from WoS, "PubMed export file" from PubMed). This is done by taking the screened results from Rayyan, and searching using the WOS ID/PubMed ID. We end up with 3 files:
 
@@ -79,16 +79,17 @@ merge_df_nocit <- merge_df
 merge_df_nocit["TC"] <- NA
 ```
 
-One of the results had a publication date as 2023 (probably an updating of metadata since the search), so was removed from the analysis.
+One of the results had a publication date as 2023 (probably an updating of metadata since the search), so was removed from the analysis. In addition there are 5 from Web of Science that have an early access date of 2022, but will get a publication date of 2023 (and thus are not included). These are in the WOS data, but appear in the merged WOS-PubMed data only filled with NA. These are removed.
 
 ```{r remove2023, include=FALSE}
 merge_df<-merge_df[merge_df$PY != 2023, ] 
 pm_df<-pm_df[pm_df$PY != 2023, ] 
 pmpartnonwos_df<-pmpartnonwos_df[pmpartnonwos_df$PY != 2023, ]
 merge_df_nocit<-merge_df_nocit[merge_df_nocit$PY != 2023, ]
+merge_df<-merge_df[!is.na(merge_df$PY),]
 ```
 
-This leaves 428 publications in total in the study, and `r nrow(merge_df)` in the largest set of bibliometric data. 
+This leaves 423 publications in total in the study, and `r nrow(merge_df)` in the largest set of bibliometric data. 
 
 * Number of items in the WOS data = `r nrow(wos_df)`
 * Number of items in the PubMed (minus WoS covered works) data = `r nrow(pmpartnonwos_df)`
